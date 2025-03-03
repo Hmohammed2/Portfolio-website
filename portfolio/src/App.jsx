@@ -237,7 +237,7 @@ function ContactSection() {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/send-email`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/send-email`,
         formData
       );
 
