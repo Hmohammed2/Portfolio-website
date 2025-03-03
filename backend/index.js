@@ -42,7 +42,7 @@ app.use(cors(corsOptions));
 app.use(express.json())
 // Serve static files from the 
 // API Endpoint to send emails
-app.post("api/send-email", async (req, res) => {
+app.post("/api/send-email", async (req, res) => {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
