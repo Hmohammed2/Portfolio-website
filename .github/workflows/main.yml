@@ -1,0 +1,39 @@
+name: Deploy Production
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Create frontend env file
+        run: echo "${{ secrets.FRONTEND_ENV_FILE }}" > ./portfolio/.env.production
+      
+      - name: Create backend env file
+        run: echo "${{ secrets.BACKEND_ENV_FILE }}" > ./backend/.env.production
+
+      # Build and deploy your containers
+      - name: Build and push images
+        run: docker compose -f docker-compose.prod.yml build && docker compose -f docker-compose.prod.yml push
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v0.1.5
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            cd /docker_projects/hamzamohammed/
+            docker compose down
+            docker compose up -d
