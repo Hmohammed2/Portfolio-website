@@ -38,10 +38,9 @@ const corsOptions = {
     origin: process.env.FRONT_END, // Replace with your frontend's origin
     allowedHeaders: ['Content-Type', 'Authorization'],
   };
-
 app.use(cors(corsOptions));
+app.use(express.json())
 // Serve static files from the 
-
 // API Endpoint to send emails
 app.post("/send-email", async (req, res) => {
     const { name, email, message } = req.body;

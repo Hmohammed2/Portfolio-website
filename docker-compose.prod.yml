@@ -1,0 +1,21 @@
+services:
+  portfolio:
+    build:
+      context: "./portfolio"
+      dockerfile: Dockerfile.prod
+    ports:
+      - "80:80"
+    image: hmohammed2/portfolio:v1.0.0
+    env_file:
+      - ./portfolio/.env.production
+  backend-email:
+    build:
+      context: "./backend"
+      dockerfile: Dockerfile.prod
+    ports:
+      - "7777:7777"
+    image: hmohammed2/backend-email:v1.0.0
+    env_file:
+      - ./backend/.env.production
+    environment:
+      - NODE_ENV=production
