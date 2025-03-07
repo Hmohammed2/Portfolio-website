@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import HamzaM from "./assets/HamzaM.jpg";
-import { Code, Server, BarChart, Menu, X } from "lucide-react";
+import { Code, Server, BarChart, Menu, X, ChevronLeft, ChevronRight } from "lucide-react";
 import axios from 'axios';
 
 function Navbar() {
@@ -53,7 +53,7 @@ function Navbar() {
 
 function HeroSection() {
   return (
-<header id="home" className="text-center max-w-3xl mx-auto py-20 md:py-40 px-6">
+    <header id="home" className="text-center max-w-3xl mx-auto py-20 md:py-40 px-6">
       <div className="inline-block px-4 shadow-lg rounded-full bg-gray-800">
         <h2 className="text-2xl font-semibold mb-4 mt-4">Hi, I am Hamza!</h2>
       </div>
@@ -75,78 +75,163 @@ function HeroSection() {
   );
 }
 
+const projects = [
+  {
+    img: "/assets/Geocode.PNG",
+    title: "SimpleGeoAPI",
+    description: "An API for seamless geographic data integration.",
+    link: "https://simplegeoapi.com",
+  },
+  {
+    img: "/assets/Talibah.png",
+    title: "Talibah Match",
+    description: "A matrimonial platform for matching muslims seeking knowledge.",
+    link: "https://talibamatch.com",
+  },
+  {
+    img: "/assets/tutor-search.png",
+    title: "Harambee Tutors",
+    description: "An online tutoring service for students.",
+    link: "https://harambeedevops.com",
+  },
+  {
+    img: "/assets/tcpcomm.gif",
+    title: "Lightweight TCP Server with HTTP Handling",
+    description: "This project is a lightweight TCP server built using Node.js, designed to handle incoming client connections efficiently",
+    link: "https://github.com/Hmohammed2/HTTP_Server",
+  },
+  {
+    img: "/assets/project-overview.png",
+    title: "Pinterest Data Pipeline",
+    description: "This project involved replicating Pinterests end to end data processing pipeline in Python. It is implemented based on Lambda architecture that utilises both batch and stream processing",
+    link: "https://github.com/Hmohammed2/Pinterest_Data_pipeline",
+  },
+];
+
 function ProjectsSection() {
+  const containerRef = useRef(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [projectsPerPage, setProjectsPerPage] = useState(3);
+  const [index, setIndex] = useState(0);
+
+  // Tailwind's gap-6 is roughly 24px (1.5rem) at a 16px base.
+  const GAP = 24; 
+
+  // Update containerWidth on mount and when the window is resized.
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  // Dynamically update projectsPerPage based on viewport width.
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        // Mobile: 1 project per view.
+        setProjectsPerPage(1);
+      } else if (window.innerWidth < 768) {
+        // Small screens: 2 projects per view.
+        setProjectsPerPage(2);
+      } else {
+        // Medium and larger: 3 projects per view.
+        setProjectsPerPage(3);
+      }
+      setIndex(0); // Reset carousel index on breakpoint change.
+    };
+
+    window.addEventListener('resize', handleResize);
+    // Initial check.
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Calculate the width of each card by subtracting the total gap between cards.
+  const cardWidth = containerWidth
+    ? (containerWidth - (projectsPerPage - 1) * GAP) / projectsPerPage
+    : 0;
+
+  // Slide one card at a time.
+  const handlePrev = () => {
+    setIndex((prevIndex) =>
+      prevIndex === 0 ? projects.length - projectsPerPage : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setIndex((prevIndex) =>
+      prevIndex >= projects.length - projectsPerPage ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <section id="projects" className="max-w-4xl mx-auto py-10" data-aos="fade-up">
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
-        <h2 className="text-3xl font-semibold mb-4">Projects</h2>
-        <p className="text-gray-400 mb-6">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4">Projects</h2>
+        <p className="text-gray-400 text-sm md:text-base mb-6">
           A showcase of my latest work and projects.
         </p>
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Project 1 */}
-          <div className="bg-gray-700 p-4 rounded text-center">
-            <img
-              src="/assets/Geocode.PNG"
-              alt="SimpleGeoApi"
-              className="w-64 h-64 mx-auto rounded-md object-cover"
-              loading="lazy"
-            />
-            <h3 className="text-xl font-bold mt-3">SimpleGeoAPI</h3>
-            <p className="text-gray-300 mt-2">An API for seamless geographic data integration.</p>
-            <a
-              href="https://simplegeoapi.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition"
+
+        <div className="relative">
+          {/* Left Arrow */}
+          <button
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-50"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* Carousel viewport */}
+          <div className="overflow-hidden w-full" ref={containerRef}>
+            {/* Flex container with gap */}
+            <div
+              className="flex gap-6 transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${index * (cardWidth + GAP)}px)` }}
             >
-              Visit Website
-            </a>
+              {projects.map((project, idx) => (
+                <div
+                  key={idx}
+                  className="bg-gray-700 p-4 rounded text-center flex-shrink-0"
+                  style={{ width: cardWidth }}
+                >
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-auto mx-auto rounded-md object-cover"
+                    loading="lazy"
+                  />
+                  <h3 className="text-xl font-bold mt-3">{project.title}</h3>
+                  <p className="text-gray-300 mt-2">{project.description}</p>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition"
+                  >
+                    Visit Website
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-          {/* Project 2 */}
-          <div className="bg-gray-700 p-4 rounded text-center">
-            <img
-              src="/assets/Talibah.png"
-              alt="Talibah"
-              className="w-64 h-64 mx-auto rounded-md object-cover"
-              loading="lazy"
-            />
-            <h3 className="text-xl font-bold mt-3">Talibah Match</h3>
-            <p className="text-gray-300 mt-2">A matrimonial platform for matching muslims seeking knowledge.</p>
-            <a
-              href="https://talibamatch.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition"
-            >
-              Visit Website
-            </a>
-          </div>
-          {/* Project 3 */}
-          <div className="bg-gray-700 p-4 rounded text-center">
-            <img
-              src="/assets/tutor-search.png"
-              alt="Harambee Tutors"
-              className="w-64 h-64 mx-auto rounded-md object-cover"
-              loading="lazy"
-            />
-            <h3 className="text-xl font-bold mt-3">Harambee Tutors</h3>
-            <p className="text-gray-300 mt-2">An online tutoring service for students.</p>
-            <a
-              href="https://harambeedevops.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition"
-            >
-              Visit Website
-            </a>
-          </div>
+
+          {/* Right Arrow */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-50"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
       </div>
     </section>
   );
-}
+};
 
 function AboutSection() {
   return (
@@ -297,6 +382,58 @@ function ContactSection() {
   );
 }
 
+function TechnologySection() {
+  const frontendTech = [
+    { name: 'React', img: '/assets/react.svg' },
+    { name: 'HTML', img: '/assets/html.svg' },
+    { name: 'Javascript', img: '/assets/javascript.svg' },
+    { name: 'Tailwind CSS', img: '/assets/tailwind.svg' },
+    // add more frontend technologies as needed
+  ];
+
+  const backendTech = [
+    { name: 'Nodejs', img: '/assets/nodejs.svg' },
+    { name: 'Python', img: '/assets/python.svg' },
+    { name: 'Django', img: '/assets/django.svg' },
+    { name: 'Docker', img: '/assets/docker.svg' },
+    // add more backend technologies as needed
+  ];
+
+  return (
+    <section id="technologies" className="max-w-4xl mx-auto py-20" data-aos="fade-up">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-semibold mb-6 text-center">Technologies I Use</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Frontend Technologies */}
+          <div>
+            <h3 className="text-2xl font-bold mb-4 text-center">Frontend Technologies</h3>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              {frontendTech.map((tech, idx) => (
+                <div key={idx} className="flex flex-col items-center">
+                  <img src={tech.img} alt={tech.name} className="w-16 h-16 object-contain bg-white shadow-lg rounded-md" />
+                  <span className="mt-2 text-sm">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Backend Technologies */}
+          <div>
+            <h3 className="text-2xl font-bold mb-4 text-center">Backend Technologies</h3>
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              {backendTech.map((tech, idx) => (
+                <div key={idx} className="flex flex-col items-center">
+                  <img src={tech.img} alt={tech.name} className="w-16 h-16 object-contain bg-white shadow-lg rounded-md" />
+                  <span className="mt-2 text-sm">{tech.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-20">
@@ -378,6 +515,7 @@ function App() {
         <ProjectsSection />
         <AboutSection />
         <ServicesSection />
+        <TechnologySection />
         <ContactSection />
       </main>
       <Footer />
