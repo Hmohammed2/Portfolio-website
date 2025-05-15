@@ -86,7 +86,7 @@ const projects = [
     img: "/assets/Talibah.png",
     title: "Talibah Match",
     description: "A matrimonial platform for matching muslims seeking knowledge.",
-    link: "https://talibamatch.com",
+    link: "https://talibah.co.uk",
   },
   {
     img: "/assets/tutor-search.png",
