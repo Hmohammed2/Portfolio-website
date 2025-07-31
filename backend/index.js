@@ -11,6 +11,8 @@ const sendEmail = async (to, subject, textContent, htmlContent) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Use Gmail's SMTP service
+            secure: false, // false for STARTTLS (port 587)
+            requireTLS: true, // <-- add this
             auth: {
                 user: process.env.EMAIL_USER, // Your Gmail address
                 pass: process.env.EMAIL_PASS, // Your Gmail App Password
@@ -37,7 +39,7 @@ const sendEmail = async (to, subject, textContent, htmlContent) => {
 const corsOptions = {
     origin: process.env.FRONT_END, // Replace with your frontend's origin
     allowedHeaders: ['Content-Type', 'Authorization'],
-  };
+};
 app.use(cors(corsOptions));
 app.use(express.json())
 // Serve static files from the 
