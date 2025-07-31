@@ -19,6 +19,7 @@ const sendEmail = async (to, subject, textContent, htmlContent) => {
             },
             logger: true,  // Enable debugging logs
             debug: true,
+            connectionTimeout: 10000,
         });
 
         await transporter.sendMail({
