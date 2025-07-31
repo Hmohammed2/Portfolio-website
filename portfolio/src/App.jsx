@@ -77,7 +77,7 @@ function HeroSection() {
 
 const projects = [
   {
-    img: "/assets/ResumeLogo.PNG",
+    img: "/assets/ResumeLogo.webp",
     title: "AIElevateCV",
     description: "A Web tool that optimizes and tailors resume based on job description.",
     link: "https://aielevatecv.com",
