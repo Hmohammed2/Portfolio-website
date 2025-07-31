@@ -347,13 +347,13 @@ function ContactSection() {
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center animate-fadeIn">
         <h2 className="text-3xl font-semibold mb-4">Contact</h2>
         <p className="text-gray-400 mb-6">
-          Get in touch to discuss your next project or ask any questions. Or alternatively, you can email me at
+          Get in touch to discuss your next project or ask any questions. Or alternatively, you can email me at:  
           <a
             href="mailto:hamza_mohammed15@hotmail.com"
             className="text-blue-400 underline hover:text-blue-300"
           >
-            hamza_mohammed15@hotmail.com
-          </a>
+           hamza_mohammed15@hotmail.com
+          </a>.
         </p>
         <form className="space-y-4">
           <input
