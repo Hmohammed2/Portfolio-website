@@ -77,6 +77,12 @@ function HeroSection() {
 
 const projects = [
   {
+    img: "/assets/ResumeLogo.PNG",
+    title: "AIElevateCV",
+    description: "A Web tool that optimizes and tailors resume based on job description.",
+    link: "https://aielevatecv.com",
+  },
+  {
     img: "/assets/Geocode.PNG",
     title: "SimpleGeoAPI",
     description: "An API for seamless geographic data integration.",
