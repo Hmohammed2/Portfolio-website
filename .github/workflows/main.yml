@@ -23,17 +23,17 @@ jobs:
       - name: Create backend env file
         run: echo "${{ secrets.BACKEND_ENV_FILE }}" > ./backend/.env.production
 
-      # Build and deploy your containers
-      - name: Build and push images
-        run: docker compose -f docker-compose.prod.yml build && docker compose -f docker-compose.prod.yml push
+      # # Build and deploy your containers
+      # - name: Build and push images
+      #   run: docker compose -f docker-compose.prod.yml build && docker compose -f docker-compose.prod.yml push
 
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@v0.1.5
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          password: ${{ secrets.VPS_PASSWORD }}
-          script: |
-            cd /docker_projects/hamzamohammed.com/
-            docker compose down
-            docker compose up -d
+      # - name: Deploy to VPS
+      #   uses: appleboy/ssh-action@v0.1.5
+      #   with:
+      #     host: ${{ secrets.VPS_HOST }}
+      #     username: ${{ secrets.VPS_USER }}
+      #     password: ${{ secrets.VPS_PASSWORD }}
+      #     script: |
+      #       cd /docker_projects/hamzamohammed.com/
+      #       docker compose down
+      #       docker compose up -d
