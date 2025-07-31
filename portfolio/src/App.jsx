@@ -121,7 +121,7 @@ function ProjectsSection() {
   const [index, setIndex] = useState(0);
 
   // Tailwind's gap-6 is roughly 24px (1.5rem) at a 16px base.
-  const GAP = 24; 
+  const GAP = 24;
 
   // Update containerWidth on mount and when the window is resized.
   useEffect(() => {
@@ -347,7 +347,13 @@ function ContactSection() {
       <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-center animate-fadeIn">
         <h2 className="text-3xl font-semibold mb-4">Contact</h2>
         <p className="text-gray-400 mb-6">
-          Get in touch to discuss your next project or ask any questions. Or alternatively, you can email me at <a href="mailto:hamza_mohammed15@hotmail.com" className="text-blue-400"/>
+          Get in touch to discuss your next project or ask any questions. Or alternatively, you can email me at
+          <a
+            href="mailto:hamza_mohammed15@hotmail.com"
+            className="text-blue-400 underline hover:text-blue-300"
+          >
+            hamza_mohammed15@hotmail.com
+          </a>
         </p>
         <form className="space-y-4">
           <input
