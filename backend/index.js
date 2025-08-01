@@ -1,40 +1,33 @@
 const dotenv = require("dotenv")
 const express = require('express')
 const cors = require("cors")
-const nodemailer = require("nodemailer");
 
 dotenv.config()
 const app = express()
 const PORT = 7777
 
+const sgMail = require('@sendgrid/mail');
+
 const sendEmail = async (to, subject, textContent, htmlContent) => {
-    try {
-        const transporter = nodemailer.createTransport({
-            service: "gmail", // Use Gmail's SMTP service
-            secure: false, // false for STARTTLS (port 587)
-            requireTLS: true, // <-- add this
-            auth: {
-                user: process.env.EMAIL_USER, // Your Gmail address
-                pass: process.env.EMAIL_PASS, // Your Gmail App Password
-            },
-            logger: true,  // Enable debugging logs
-            debug: true,
-            connectionTimeout: 10000,
-        });
+  try {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-        await transporter.sendMail({
-            from: `"Portfolio Website" <${process.env.EMAIL_USER}>`, // Ensure this matches your Gmail address
-            to,
-            subject,
-            text: textContent,
-            html: htmlContent,
-        });
+    const msg = {
+      to, // recipient email
+      from: 'no-reply@hamzamohammed.com', // must be a verified sender in SendGrid
+      subject,
+      text: textContent,
+      html: htmlContent,
+    };
 
-        console.log(`📧 Email sent to ${to}`);
-    } catch (error) {
-        console.error("❌ Email sending failed:", error);
-    }
+    await sgMail.send(msg);
+    console.log(`📧 Email sent to ${to}`);
+  } catch (error) {
+    console.error('❌ SendGrid email error:', error.response?.body || error);
+    throw error;
+  }
 };
+
 
 // Middleware
 const corsOptions = {
