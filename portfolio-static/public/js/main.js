@@ -11,7 +11,7 @@ const projects = [
     description: 'An API for seamless geographic data integration and POI analysis',
     link: 'https://simplegeoapi.com'
   },
-    {
+  {
     img: "assets/Talibah.png",
     title: "Talibah Match",
     description: "A matrimonial platform for matching muslims seeking knowledge.",
@@ -55,6 +55,31 @@ function renderProjects() {
     </div>
   `).join('');
   updateTrackPosition();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  AOS.init({ duration: 1000, once: false, mirror: true });
+
+  const toggleBtn = document.getElementById("menu-toggle");
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", toggleMenu);
+  }
+
+  // Close mobile nav on link click (only for small screens)
+  const navLinks = document.querySelectorAll("#nav-menu a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const menu = document.getElementById("nav-menu");
+      if (window.innerWidth < 768) {
+        menu.classList.add("hidden");
+      }
+    });
+  });
+});
+
+function toggleMenu() {
+  const menu = document.getElementById("nav-menu");
+  menu.classList.toggle("hidden");
 }
 
 function getCardWidth() {

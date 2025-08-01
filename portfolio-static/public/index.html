@@ -36,17 +36,6 @@
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            AOS.init({ duration: 1000, once: false, mirror: true });
-        });
-
-        function toggleMenu() {
-            const menu = document.getElementById("nav-menu");
-            menu.classList.toggle("hidden");
-        }
-    </script>
 </head>
 
 <body class="bg-gray-900 text-white">
@@ -55,7 +44,7 @@
         <div class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
             <h1 class="text-2xl font-bold text-white">HamzaM</h1>
             <div class="md:hidden">
-                <button onclick="toggleMenu()" class="text-gray-300 hover:text-white transition">
+                <button id="menu-toggle" class="text-gray-300 hover:text-white transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 6h16M4 12h16M4 18h16" />
@@ -64,14 +53,12 @@
             </div>
             <ul id="nav-menu"
                 class="hidden md:flex md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-gray-800 md:bg-transparent transition-all duration-300 ml-auto">
-                <li class="p-4"><a href="#projects" class="text-gray-300 hover:text-white transition"
-                        onclick="toggleMenu()">Projects</a></li>
-                <li class="p-4"><a href="#about" class="text-gray-300 hover:text-white transition"
-                        onclick="toggleMenu()">About Me</a></li>
+                <li class="p-4"><a href="#projects" class="text-gray-300 hover:text-white transition">Projects</a></li>
+                <li class="p-4"><a href="#about" class="text-gray-300 hover:text-white transition">About Me</a></li>
                 <li class="p-2">
                     <a href="#contact"
-                        class="px-2 py-2 inline-block shadow-lg rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold transition"
-                        onclick="toggleMenu()">Contact Me!</a>
+                        class="px-2 py-2 inline-block shadow-lg rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold transition">Contact
+                        Me!</a>
                 </li>
             </ul>
         </div>
