@@ -15,6 +15,6 @@ services:
       - "7777:7777"
     image: hmohammed2/backend-email:v1.0.0
     env_file:
-      - ./backend/.env.production
+      - ./backend/.env
     environment:
       - NODE_ENV=production
