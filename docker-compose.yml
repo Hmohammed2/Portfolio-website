@@ -1,0 +1,28 @@
+services:
+  frontend:
+    container_name: portfolio-frontend
+    restart: always
+    ports:
+      - "5001:80"
+    image: hmohammed2/portfolio:v1.0.0
+    build:
+      context: "./portfolio-static"
+      dockerfile: Dockerfile.prod
+    depends_on:
+      - backend
+  backend:
+    container_name: portfolio-backend
+    restart: always
+    image: hmohammed2/backend-email:v1.0.0
+    ports:
+      - "127.0.0.1:5002:7777"
+    build:
+      context: "./backend"
+      dockerfile: Dockerfile.prod
+    networks:
+      - internal_network
+    environment:
+      - NODE_ENV=production
+networks:
+  internal_network:
+    driver: bridge
