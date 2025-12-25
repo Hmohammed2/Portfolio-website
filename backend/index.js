@@ -1,12 +1,12 @@
-const dotenv = require("dotenv")
-const express = require('express')
-const cors = require("cors")
+const dotenv = require("dotenv");
+const express = require("express");
+const cors = require("cors");
 
-dotenv.config()
-const app = express()
-const PORT = 7777
+dotenv.config();
+const app = express();
+const PORT = 7777;
 
-const sgMail = require('@sendgrid/mail');
+const sgMail = require("@sendgrid/mail");
 
 const sendEmail = async (to, subject, textContent, htmlContent) => {
   try {
@@ -14,7 +14,7 @@ const sendEmail = async (to, subject, textContent, htmlContent) => {
 
     const msg = {
       to, // recipient email
-      from: 'no-reply@hamzamohammed.com', // must be a verified sender in SendGrid
+      from: "no-reply@hamzamohammed.com", // must be a verified sender in SendGrid
       subject,
       text: textContent,
       html: htmlContent,
@@ -23,29 +23,28 @@ const sendEmail = async (to, subject, textContent, htmlContent) => {
     await sgMail.send(msg);
     console.log(`📧 Email sent to ${to}`);
   } catch (error) {
-    console.error('❌ SendGrid email error:', error.response?.body || error);
+    console.error("❌ SendGrid email error:", error.response?.body || error);
     throw error;
   }
 };
 
-
 // Middleware
 const corsOptions = {
-    origin: process.env.FRONT_END, // Replace with your frontend's origin
-    allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: process.env.FRONT_END, // Replace with your frontend's origin
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 app.use(cors(corsOptions));
-app.use(express.json())
-// Serve static files from the 
+app.use(express.json());
+// Serve static files from the
 // API Endpoint to send emails
 app.post("/api/send-email", async (req, res) => {
-    const { name, email, message } = req.body;
+  const { name, email, company, role, volume, message } = req.body;
 
-    if (!name || !email || !message) {
-        return res.status(400).json({ error: "All fields are required" });
-    }
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
 
-    const htmlContent = `
+  const htmlContent = `
         <!DOCTYPE html>
         <html>
         <head>
@@ -66,6 +65,9 @@ app.post("/api/send-email", async (req, res) => {
                 <p>You have received a new message from your website contact form.</p>
                 <div class="details">
                     <p><strong>Name:</strong> ${name}</p>
+                    <p><strong>Company:</strong> ${company}</p>
+                    <p><strong>Role:</strong> ${role}</p>
+                    <p><strong>Company Volume:</strong> ${volume}</p>
                     <p><strong>Email:</strong> ${email}</p>
                     <p><strong>Message:</strong></p>
                     <p>${message}</p>
@@ -75,19 +77,20 @@ app.post("/api/send-email", async (req, res) => {
         </html>
     `;
 
-    try {
-        await sendEmail(
-            "hamza_mohammed15@hotmail.com", // Replace with your own email
-            `New Contact Form Submission from ${name}`,
-            `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`, htmlContent
-        );
-        res.status(200).json({ success: "Email sent successfully!" });
-    } catch (error) {
-        console.error("Email sending error:", error);
-        res.status(500).json({ error: "Failed to send email" });
-    }
+  try {
+    await sendEmail(
+      "hamza_mohammed15@hotmail.com", // Replace with your own email
+      `New Contact Form Submission from ${name}`,
+      `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
+      htmlContent
+    );
+    res.status(200).json({ success: "Email sent successfully!" });
+  } catch (error) {
+    console.error("Email sending error:", error);
+    res.status(500).json({ error: "Failed to send email" });
+  }
 });
 
 app.listen(PORT, () => {
-    console.log(`Server listening at: ${PORT}`)
-}) 
+  console.log(`Server listening at: ${PORT}`);
+});

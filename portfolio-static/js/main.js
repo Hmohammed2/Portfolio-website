@@ -3,8 +3,8 @@ const projects = [
     img: "assets/Arcadesticklabs-logo.webp",
     title: "ArcadeStickLabs",
     description:
-      "An e-commerce platform specializing in custom arcade sticks and gaming accessories.",
-    link: "https://arcadesticklabs.co.uk",
+      "A fully custom-built ordering system designed for fast repeat purchasing, complex product variants and scalable catalogue growth — built to replace manual order handling and support future B2B trade expansion.",
+    link: "/case-studies/arcadesticklabs.html",
   },
   {
     img: "assets/ResumeLogo.webp",
@@ -61,17 +61,18 @@ const GAP = 24;
 function renderProjects() {
   track.innerHTML = projects
     .map(
-      (project) => `
-    <div class="bg-gray-700 p-4 rounded text-center flex-shrink-0" style="width: ${getCardWidth()}px">
-      <img src="${project.img}" alt="${
+      (project, index) => `
+<div class="bg-gray-700 p-4 rounded text-center flex-shrink-0" style="width: ${getCardWidth()}px">
+  <img src="${project.img}" alt="${
         project.title
       }" class="w-full h-auto mx-auto rounded-md object-cover" loading="lazy" />
-      <h3 class="text-xl font-bold mt-3">${project.title}</h3>
-      <p class="text-gray-300 mt-2">${project.description}</p>
-      <a href="${
-        project.link
-      }" target="_blank" class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">Visit Website</a>
-    </div>
+  <h3 class="text-xl font-bold mt-3">${project.title}</h3>
+  <p class="text-gray-300 mt-2">${project.description}</p>
+  <a href="${project.link}" ${index === 0 ? "" : "target='_blank'"} 
+     class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">
+     ${index === 0 ? "View Case Study" : "Visit Website"}
+  </a>
+</div>
   `
     )
     .join("");

@@ -9,24 +9,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = {
       name: form.name.value,
+      role: form.role.value,
+      company: form.company.value,
+      volume: form.volume.value,
       email: form.email.value,
-      message: form.message.value
+      message: form.message.value,
     };
 
     try {
       const response = await fetch("https://hamzamohammed.com/api/send-email", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         statusEl.textContent = "✅ Message sent successfully!";
         form.reset();
       } else {
-        statusEl.textContent = "❌ Failed to send message. Please try again later.";
+        statusEl.textContent =
+          "❌ Failed to send message. Please try again later.";
       }
     } catch (error) {
       console.error("Error:", error);
