@@ -40,7 +40,7 @@ app.use(express.json());
 app.post("/api/send-email", async (req, res) => {
   const { name, email, company, role, volume, message } = req.body;
 
-  if (!name || !email || !message) {
+  if (!company || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
 

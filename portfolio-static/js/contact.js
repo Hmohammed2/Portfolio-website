@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
     setStatus("Sending...");
 
     const formData = {
+      name: form.company.value, // use company name as contact name for now
       company: form.company.value,
       role: form.role.value,
       volume: form.volume.value,
       email: form.email.value,
-      problem: form.problem.value,
+      message: form.problem.value,
     };
 
     try {
