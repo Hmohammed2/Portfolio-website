@@ -2,39 +2,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
   const statusEl = document.getElementById("form-status");
 
+  if (!form) return;
+
+  const setStatus = (msg) => {
+    if (statusEl) statusEl.textContent = msg;
+  };
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    statusEl.textContent = "Sending...";
+    setStatus("Sending...");
 
     const formData = {
-      name: form.name.value,
-      role: form.role.value,
       company: form.company.value,
+      role: form.role.value,
       volume: form.volume.value,
       email: form.email.value,
-      message: form.message.value,
+      problem: form.problem.value,
     };
 
     try {
-      const response = await fetch("https://hamzamohammed.com/api/send-email", {
+      const response = await fetch("/api/send-email", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        statusEl.textContent = "✅ Message sent successfully!";
+        setStatus("✅ Audit request sent successfully!");
         form.reset();
       } else {
-        statusEl.textContent =
-          "❌ Failed to send message. Please try again later.";
+        setStatus("❌ Failed to send. Please try again.");
       }
-    } catch (error) {
-      console.error("Error:", error);
-      statusEl.textContent = "❌ An error occurred. Please try again.";
+    } catch (err) {
+      console.error(err);
+      setStatus("❌ Network error. Please try again.");
     }
   });
 });

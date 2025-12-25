@@ -14,18 +14,18 @@ const projects = [
     link: "https://aielevatecv.com",
   },
   {
+    img: "assets/Talibah.png",
+    title: "Talibah Match",
+    description:
+      "A matrimonial platform for matching muslims seeking knowledge.",
+    link: "/case-studies/talibah.html",
+  },
+  {
     img: "assets/Geocode.PNG",
     title: "SimpleGeoAPI",
     description:
       "An API for seamless geographic data integration and POI analysis",
     link: "https://simplegeoapi.com",
-  },
-  {
-    img: "assets/Talibah.png",
-    title: "Talibah Match",
-    description:
-      "A matrimonial platform for matching muslims seeking knowledge.",
-    link: "https://talibah.co.uk",
   },
   {
     img: "assets/tutor-search.png",
@@ -70,7 +70,7 @@ function renderProjects() {
   <p class="text-gray-300 mt-2">${project.description}</p>
   <a href="${project.link}" ${index === 0 ? "" : "target='_blank'"} 
      class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">
-     ${index === 0 ? "View Case Study" : "Visit Website"}
+     ${index === 0 ? "View Case Study" : "Visit project"}
   </a>
 </div>
   `
