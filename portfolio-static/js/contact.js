@@ -4,17 +4,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!form) return;
 
+  const API_URL =
+    location.hostname === "localhost"
+      ? "http://localhost:5002/api/send-email"
+      : "/api/send-email";
+
   const setStatus = (msg) => {
     if (statusEl) statusEl.textContent = msg;
   };
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
     setStatus("Sending...");
 
     const formData = {
-      name: form.company.value, // use company name as contact name for now
+      name: form.company.value,
       company: form.company.value,
       role: form.role.value,
       volume: form.volume.value,
@@ -23,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

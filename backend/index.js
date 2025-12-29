@@ -1,39 +1,71 @@
-const dotenv = require("dotenv");
-const express = require("express");
-const cors = require("cors");
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import { Client } from "@microsoft/microsoft-graph-client";
+import "isomorphic-fetch";
+import { ConfidentialClientApplication } from "@azure/msal-node";
 
 dotenv.config();
 const app = express();
 const PORT = 7777;
 
-const sgMail = require("@sendgrid/mail");
+const msal = new ConfidentialClientApplication({
+  auth: {
+    clientId: process.env.MS_CLIENT_ID,
+    authority: `https://login.microsoftonline.com/${process.env.MS_TENANT_ID}`,
+    clientSecret: process.env.MS_CLIENT_SECRET,
+  },
+});
 
-const sendEmail = async (to, subject, textContent, htmlContent) => {
-  try {
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+async function getToken() {
+  const result = await msal.acquireTokenByClientCredential({
+    scopes: ["https://graph.microsoft.com/.default"],
+  });
+  return result.accessToken;
+}
 
-    const msg = {
-      to, // recipient email
-      from: "no-reply@hamzamohammed.com", // must be a verified sender in SendGrid
+export async function sendEmail(to, subject, text, html) {
+  const token = await getToken();
+
+  const client = Client.init({
+    authProvider: (done) => done(null, token),
+  });
+
+  return client.api(`/users/${process.env.MS_SENDER}/sendMail`).post({
+    message: {
       subject,
-      text: textContent,
-      html: htmlContent,
-    };
-
-    await sgMail.send(msg);
-    console.log(`📧 Email sent to ${to}`);
-  } catch (error) {
-    console.error("❌ SendGrid email error:", error.response?.body || error);
-    throw error;
-  }
-};
+      body: { contentType: "HTML", content: html },
+      toRecipients: [{ emailAddress: { address: to } }],
+    },
+    saveToSentItems: true,
+  });
+}
 
 // Middleware
-const corsOptions = {
-  origin: process.env.FRONT_END, // Replace with your frontend's origin
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
-app.use(cors(corsOptions));
+const allowedOrigins = [
+  "http://localhost:5001", // local frontend dev
+  "http://localhost", // local frontend dev
+  "https://hamzamohammed.com", // production domain
+  "https://www.hamzamohammed.com",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow server-to-server / curl / Postman (no origin)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    methods: ["POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: false,
+  })
+);
 app.use(express.json());
 // Serve static files from the
 // API Endpoint to send emails
@@ -43,6 +75,9 @@ app.post("/api/send-email", async (req, res) => {
   if (!company || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
+
+  // Honeypot field (bot killer)
+  if (req.body.website) return res.status(200).json({ success: true });
 
   const htmlContent = `
         <!DOCTYPE html>
@@ -79,15 +114,16 @@ app.post("/api/send-email", async (req, res) => {
 
   try {
     await sendEmail(
-      "hamza_mohammed15@hotmail.com", // Replace with your own email
-      `New Contact Form Submission from ${name}`,
+      "hamza_mohammed15@hotmail.com",
+      `New Lead – ${company}`,
       `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
       htmlContent
     );
-    res.status(200).json({ success: "Email sent successfully!" });
-  } catch (error) {
-    console.error("Email sending error:", error);
-    res.status(500).json({ error: "Failed to send email" });
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Mail failed" });
   }
 });
 

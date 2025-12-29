@@ -3,8 +3,9 @@ const projects = [
     img: "assets/Arcadesticklabs-logo.webp",
     title: "ArcadeStickLabs",
     description:
-      "A fully custom-built ordering system designed for fast repeat purchasing, complex product variants and scalable catalogue growth — built to replace manual order handling and support future B2B trade expansion.",
+      "A fully custom-built ordering system designed for fast repeat purchasing complex product variants and scalable catalogue growth — built to replace manual order handling and support future B2B trade expansion.",
     link: "/case-studies/arcadesticklabs.html",
+    external: false,
   },
   {
     img: "assets/ResumeLogo.webp",
@@ -12,6 +13,7 @@ const projects = [
     description:
       "A Web tool that optimizes and tailors resume based on job description.",
     link: "https://aielevatecv.com",
+    external: true,
   },
   {
     img: "assets/Talibah.png",
@@ -19,6 +21,7 @@ const projects = [
     description:
       "A matrimonial platform for matching muslims seeking knowledge.",
     link: "/case-studies/talibah.html",
+    external: false,
   },
   {
     img: "assets/Geocode.PNG",
@@ -26,6 +29,7 @@ const projects = [
     description:
       "An API for seamless geographic data integration and POI analysis",
     link: "https://simplegeoapi.com",
+    external: true,
   },
   {
     img: "assets/tutor-search.png",
@@ -33,22 +37,23 @@ const projects = [
     description:
       "An online tutoring service project for students & tutors alike.",
     link: "https://harambeedevops.com",
+    external: true,
   },
   {
     img: "assets/tcpcomm.gif",
     title: "Lightweight TCP Server with HTTP Handling",
     description:
-      "This project is a lightweight TCP server built using Node.js, designed to handle incoming client connections efficiently",
+      "This project is a lightweight TCP server built using Node.js...",
     link: "https://github.com/Hmohammed2/HTTP_Server",
+    external: true,
   },
   {
     img: "assets/project-overview.png",
     title: "Pinterest Data Pipeline",
-    description:
-      "This project involved replicating Pinterests end to end data processing pipeline in Python. It is implemented based on Lambda architecture that utilises both batch and stream processing",
+    description: "End-to-end Pinterest Lambda pipeline replication...",
     link: "https://github.com/Hmohammed2/Pinterest_Data_pipeline",
+    external: true,
   },
-  // Add more project objects here
 ];
 
 const track = document.getElementById("projects-track");
@@ -68,10 +73,12 @@ function renderProjects() {
       }" class="w-full h-auto mx-auto rounded-md object-cover" loading="lazy" />
   <h3 class="text-xl font-bold mt-3">${project.title}</h3>
   <p class="text-gray-300 mt-2">${project.description}</p>
-  <a href="${project.link}" ${index === 0 ? "" : "target='_blank'"} 
-     class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">
-     ${index === 0 ? "View Case Study" : "Visit project"}
-  </a>
+<a href="${project.link}"
+   ${project.external ? `target="_blank" rel="noopener noreferrer"` : ""}
+   class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">
+
+   ${project.external ? "Visit Project" : "View Case Study"}
+</a>
 </div>
   `
     )
