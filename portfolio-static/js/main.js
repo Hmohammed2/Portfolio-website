@@ -1,6 +1,6 @@
 const projects = [
   {
-    img: "assets/Arcadesticklabs-logo.webp",
+    img: "assets/arcadesticklabs-logo.webp",
     title: "ArcadeStickLabs",
     description:
       "A fully custom-built ordering system designed for fast repeat purchasing complex product variants and scalable catalogue growth — built to replace manual order handling and support future B2B trade expansion.",
