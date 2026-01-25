@@ -1,241 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>
-      Hamza Mohammed | B2B E-Commerce & Order Automation for UK Trade Suppliers
+      Ecommerce Developer for Small Brands | High-Converting Online Stores
     </title>
 
-    <!-- SEO Meta Tags -->
+    <!-- Primary SEO -->
     <meta
       name="description"
-      content="I help UK manufacturers and trade suppliers automate B2B online ordering, account pricing and ERP integrations — reducing admin work and increasing repeat sales.
-"
+      content="I help small brands and solo founders build high-converting ecommerce stores that turn visitors into customers. Custom Shopify and headless ecommerce solutions focused on sales, speed and scalability."
     />
     <meta
       name="keywords"
-      content="Hamza Mohammed, Full Stack Developer, React, Node.js, Portfolio, Python Developer, Web Developer"
+      content="ecommerce developer for small brands, shopify developer uk, ecommerce website for small business, online store developer, conversion focused ecommerce, freelance ecommerce developer"
     />
     <meta name="author" content="Hamza Mohammed" />
+    <link rel="canonical" href="https://hamzamohammed.com/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hamzamohammed.com/" />
-    <meta property="og:title" content="Hamza Mohammed | Full Stack Developer" />
+    <meta
+      property="og:title"
+      content="Ecommerce Developer Helping Small Brands Increase Sales"
+    />
     <meta
       property="og:description"
-      content="Explore Hamza's portfolio featuring full-stack web development projects and services."
+      content="Custom ecommerce stores built for growth — faster checkouts, better UX and higher conversions."
     />
     <meta
       property="og:image"
-      content="https://hamzamohammed.com/assets/HamzaM.jpg"
+      content="https://hamzamohammed.com/assets/HamzaM.webp"
     />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://hamzamohammed.com/" />
-    <meta
-      name="twitter:title"
-      content="Hamza Mohammed | Full Stack Developer"
-    />
+    <meta name="twitter:title" content="Ecommerce Developer for Small Brands" />
     <meta
       name="twitter:description"
-      content="Explore Hamza's portfolio featuring full-stack web development projects and services."
+      content="I help small ecommerce brands turn traffic into paying customers."
     />
     <meta
       name="twitter:image"
-      content="https://hamzamohammed.com/assets/HamzaM.jpg"
+      content="https://hamzamohammed.com/assets/HamzaM.webp"
     />
 
-    <!-- Tailwind CSS -->
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hamza Mohammed",
+        "url": "https://hamzamohammed.com",
+        "jobTitle": "Ecommerce Developer",
+        "knowsAbout": [
+          "Ecommerce Development",
+          "Shopify",
+          "Checkout Optimisation",
+          "Conversion Rate Optimisation",
+          "Stripe Payments",
+          "Order Automation"
+        ]
+      }
+    </script>
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- AOS (Animate On Scroll) -->
+    <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <style>
+      .tech-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .tech-card img {
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        background: white;
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      }
+      .tech-card span {
+        font-size: 0.875rem;
+        color: #e5e7eb;
+      }
+    </style>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
 
   <body class="bg-gray-900 text-white">
     <!-- Navbar -->
-    <nav class="w-full shadow-lg top-0 z-50 bg-gray-800 fixed bg-opacity-50">
+    <nav
+      class="fixed top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-900/80 to-gray-900/40 backdrop-blur z-50"
+    >
       <div
-        class="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between"
+        class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between"
       >
-        <h1 class="text-2xl font-bold text-white">HamzaM</h1>
-        <div class="md:hidden">
-          <button
-            id="menu-toggle"
-            class="text-gray-300 hover:text-white transition"
-          >
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
-        <ul
-          id="nav-menu"
-          class="hidden md:flex md:flex-row absolute md:static top-full left-0 w-full md:w-auto bg-gray-800 md:bg-transparent transition-all duration-300 ml-auto"
-        >
-          <li class="p-4">
-            <a
-              href="#projects"
-              class="text-gray-300 hover:text-white transition"
-              >Projects</a
-            >
-          </li>
-          <li class="p-4">
-            <a href="#about" class="text-gray-300 hover:text-white transition"
-              >About Me</a
-            >
-          </li>
-          <li class="p-4">
-            <a
-              href="#services"
-              class="text-gray-300 hover:text-white transition"
-              >Services</a
-            >
-          </li>
-          <li class="p-2">
+        <!-- Logo -->
+        <span class="text-xl font-bold">HamzaM</span>
+
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center gap-6 text-gray-300">
+          <li><a href="#projects" class="hover:text-white">Work</a></li>
+          <li><a href="#services" class="hover:text-white">Services</a></li>
+          <li><a href="#about" class="hover:text-white">About</a></li>
+          <li>
             <a
               href="#contact"
-              class="px-2 py-2 inline-block shadow-lg rounded-lg bg-yellow-500 hover:bg-yellow-600 text-black font-semibold transition"
-              >Request an audit!</a
+              class="bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-600"
             >
+              Free Store Audit
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="menu-toggle"
+          class="md:hidden text-gray-300 hover:text-white focus:outline-none"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Nav Menu -->
+      <div
+        id="nav-menu"
+        class="hidden md:hidden bg-gray-900/95 backdrop-blur border-t border-gray-800"
+      >
+        <ul class="flex flex-col px-6 py-6 space-y-4 text-gray-300">
+          <li>
+            <a href="#projects" class="block hover:text-white">Work</a>
+          </li>
+          <li>
+            <a href="#services" class="block hover:text-white">Services</a>
+          </li>
+          <li>
+            <a href="#about" class="block hover:text-white">About</a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="inline-block bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-600"
+            >
+              Free Store Audit
+            </a>
           </li>
         </ul>
       </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="pt-24">
+    <main class="pt-20 md:pt-24">
       <!-- Hero Section -->
-      <section id="home" class="text-center max-w-4xl mx-auto py-20 px-6">
-        <div class="inline-block px-4 shadow-lg rounded-full bg-gray-800">
-          <h2 class="text-2xl font-semibold mb-4 mt-4">Hi, I am Hamza!</h2>
-        </div>
-        <h1 class="text-3xl md:text-5xl font-bold mb-4 mt-4">
-          B2B E-Commerce & Order Automation for UK Trade Suppliers
-        </h1>
-        <p class="text-lg text-gray-400 mb-6 px-4">
-          I help UK manufacturers, wholesalers and trade suppliers replace
-          manual phone/email ordering with fast, custom online ordering systems
-          that reduce admin work and increase repeat sales.
-        </p>
-        <div class="space-x-4">
-          <a
-            href="#contact"
-            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition mb-4 inline-block"
-            >Request a Free Ordering Audit</a
-          >
-          <a
-            href="#services"
-            class="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-lg transition inline-block"
-            >See how it works</a
-          >
-        </div>
-      </section>
-
-      <!-- Projects Section -->
-      <section
-        id="projects"
-        class="max-w-4xl mx-auto py-10 px-6"
-        data-aos="fade-up"
-      >
-        <div class="relative">
-          <!-- Left Arrow -->
-          <button
-            id="prev-project"
-            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-50"
-          >
-            &#10094;
-          </button>
-
-          <!-- Viewport container -->
-          <div class="overflow-hidden w-full" id="projects-container">
-            <div
-              id="projects-track"
-              class="flex gap-6 transition-transform duration-500 ease-in-out"
-            >
-              <!-- JS will insert cards here -->
-            </div>
-          </div>
-
-          <!-- Right Arrow -->
-          <button
-            id="next-project"
-            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-black text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-50"
-          >
-            &#10095;
-          </button>
-        </div>
-      </section>
-
-      <!-- About Section -->
-      <section
-        id="about"
-        class="max-w-4xl mx-auto py-20 px-6"
-        data-aos="fade-up"
-      >
+      <section class="relative overflow-hidden pt-20 pb-24 px-6">
+        <!-- Background Image (extends under navbar) -->
         <div
-          class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center"
-        >
-          <!-- Text Content -->
-          <div class="md:w-2/3 md:pr-8 mt-5">
-            <h2 class="text-3xl font-semibold mb-4">Hi, I’m Hamza</h2>
+          class="absolute inset-x-0 top-0 -z-10 h-full bg-cover bg-center"
+          style="
+            background-image: url(&quot;/assets/Ecommerce_stock_image.webp&quot;);
+          "
+        ></div>
 
-            <p class="text-gray-400">
-              I help UK manufacturers, wholesalers and trade suppliers replace
-              slow, manual phone/email ordering with fast, automated online
-              ordering systems that reduce admin workload and increase repeat
-              sales.
-            </p>
+        <!-- Overlay -->
+        <div
+          class="absolute inset-0 -z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900/90"
+        ></div>
 
-            <p class="text-gray-400 mt-4">
-              Over the past 4+ years I’ve worked with growing businesses that
-              have outgrown off-the-shelf platforms like Shopify and need custom
-              systems that handle account pricing, trade terms, ERP integrations
-              and high-volume repeat ordering.
-            </p>
+        <!-- Content -->
+        <div class="relative max-w-4xl mx-auto text-center">
+          <span
+            class="inline-block px-4 py-2 bg-gray-800/80 backdrop-blur rounded-full text-sm mb-6"
+          >
+            Ecommerce Developer for Small Brands
+          </span>
 
-            <p class="text-gray-400 mt-4">
-              My role goes beyond “building websites” — I design revenue
-              infrastructure: dealer portals, contract pricing engines, bulk
-              order tools and backend integrations that make ordering easier for
-              your customers and your staff.
-            </p>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            I Build Ecommerce Stores<br />
+            <span class="text-blue-400">That Actually Convert</span>
+          </h1>
 
-            <p class="text-gray-400 mt-4">
-              If your business still processes orders by email, spreadsheets or
-              PDF forms, I can help you modernise your entire ordering workflow.
-            </p>
+          <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            I help small brands and solo founders launch fast, high-converting
+            ecommerce stores — without bloated themes, clunky checkouts or tech
+            headaches.
+          </p>
 
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              class="inline-block py-2 px-4 bg-blue-500 hover:bg-blue-600 mt-4 rounded-lg shadow-lg"
+              class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
             >
-              Request a Free Ordering Audit
+              Request a Free Audit
             </a>
-          </div>
-          <!-- Image -->
-          <div class="mt-6 md:mt-0 md:w-1/3 flex justify-center">
-            <img
-              src="assets/HamzaM.png"
-              alt="Hamza M"
-              class="w-48 h-48 rounded-full object-cover"
-              loading="lazy"
-            />
+            <a
+              href="#services"
+              class="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-lg font-bold transition backdrop-blur text-black"
+            >
+              How I Help
+            </a>
           </div>
         </div>
       </section>
@@ -243,110 +229,161 @@
       <!-- Services Section -->
       <section
         id="services"
-        class="max-w-4xl mx-auto py-20 px-6"
+        class="max-w-7xl mx-auto py-20 px-6"
         data-aos="fade-up"
       >
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
-          <h2 class="text-3xl font-semibold mb-4">
-            How I Help Trade & Manufacturing Businesses
-          </h2>
-          <p class="text-gray-400 mb-10">
-            I design and build custom B2B e-commerce systems that replace manual
-            ordering, reduce admin work, and increase repeat sales.
-          </p>
+        <h2 class="text-3xl font-semibold text-center mb-12">
+          How I Help Small Ecommerce Brands
+        </h2>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Service 1 -->
-            <div class="bg-gray-700 p-6 rounded-lg flex flex-col items-center">
-              <svg
-                class="w-12 h-12 text-blue-400 mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2"
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-2">Store Builds & Redesigns</h3>
+            <p class="text-gray-400">
+              Clean, fast ecommerce stores built to convert — not generic themes
+              that look nice but don’t sell.
+            </p>
+          </div>
+
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-2">Checkout & Conversion Fixes</h3>
+            <p class="text-gray-400">
+              Improve cart flow, reduce drop-offs and increase completed
+              checkouts.
+            </p>
+          </div>
+
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-2">Payments & Automations</h3>
+            <p class="text-gray-400">
+              Stripe, PayPal, order confirmations, inventory sync and fulfilment
+              automation.
+            </p>
+          </div>
+
+          <div class="bg-gray-800 p-6 rounded-lg">
+            <h3 class="text-xl font-bold mb-2">Ongoing Optimisation</h3>
+            <p class="text-gray-400">
+              Small iterative improvements that compound into more revenue over
+              time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section
+        id="projects"
+        class="max-w-7xl mx-auto py-16 px-6"
+        data-aos="fade-up"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <!-- Left: Text + CTA -->
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl font-semibold mb-4">Selected Ecommerce Work</h2>
+
+            <p class="text-gray-400 mb-6">
+              Real ecommerce stores built for small brands — focused on
+              conversion, performance and clean UX, not just visuals.
+            </p>
+
+            <a
+              href="#contact"
+              class="inline-block bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+            >
+              Request a Free Audit
+            </a>
+          </div>
+
+          <!-- Right: Carousel -->
+          <div class="relative lg:col-span-8">
+            <!-- Left Arrow -->
+            <button
+              id="prev-project"
+              class="absolute -left-4 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-20"
+            >
+              &#10094;
+            </button>
+
+            <!-- Viewport -->
+            <div class="overflow-hidden w-full" id="projects-container">
+              <div
+                id="projects-track"
+                class="flex gap-6 transition-transform duration-500 ease-in-out"
               >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16 18l6-6-6-6M8 6H2v12h6"
-                />
-              </svg>
-              <h3 class="text-xl font-bold mb-2">B2B Ordering Portals</h3>
-              <p class="text-gray-300">
-                Secure trade customer logins with account pricing, credit terms,
-                saved orders, and fast re-ordering — replacing phone and email
-                orders.
-              </p>
+                <!-- JS will insert cards here -->
+              </div>
             </div>
 
-            <!-- Service 2 -->
-            <div class="bg-gray-700 p-6 rounded-lg flex flex-col items-center">
-              <svg
-                class="w-12 h-12 text-green-400 mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M4 4h16v16H4z"
-                />
-              </svg>
-              <h3 class="text-xl font-bold mb-2">
-                Account Pricing & Contract Terms
-              </h3>
-              <p class="text-gray-300">
-                Customer-specific pricing, discounts, tax rules and payment
-                terms — perfect for wholesalers, distributors and manufacturers.
-              </p>
-            </div>
+            <!-- Right Arrow -->
+            <button
+              id="next-project"
+              class="absolute -right-4 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-20"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </section>
 
-            <!-- Service 3 -->
-            <div class="bg-gray-700 p-6 rounded-lg flex flex-col items-center">
-              <svg
-                class="w-12 h-12 text-yellow-400 mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 17v-2h6v2a2 2 0 002 2h2V5H5v14h2a2 2 0 002-2z"
-                />
-              </svg>
-              <h3 class="text-xl font-bold mb-2">Bulk & Repeat Ordering</h3>
-              <p class="text-gray-300">
-                CSV upload, quick-order forms, saved templates and
-                mobile-friendly ordering — designed for high-volume repeat
-                customers.
-              </p>
-            </div>
-            <div class="bg-gray-700 p-6 rounded-lg flex flex-col items-center">
-              <svg
-                class="w-12 h-12 text-purple-400 mb-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M9 17v-2h6v2a2 2 0 002 2h2V5H5v14h2a2 2 0 002-2z"
-                />
-              </svg>
-              <h3 class="text-xl font-bold mb-2">
-                ERP & Accounting Integration
-              </h3>
-              <p class="text-gray-300">
-                Live stock levels, pricing and invoices synced with Sage, Xero,
-                QuickBooks, Netsuite and custom ERP systems.
-              </p>
-            </div>
+      <!-- About Section -->
+      <section
+        id="about"
+        class="max-w-7xl mx-auto py-24 px-6"
+        data-aos="fade-up"
+      >
+        <div
+          class="bg-gray-800/80 backdrop-blur p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-12"
+        >
+          <!-- Image -->
+          <div class="md:w-1/3 flex justify-center">
+            <img
+              src="assets/HamzaM.webp"
+              alt="Hamza Mohammed ecommerce developer"
+              class="w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover shadow-lg"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- Text Content -->
+          <div class="md:w-2/3">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+              Hi, I’m Hamza
+            </h2>
+
+            <p class="text-gray-300 leading-relaxed">
+              I help small brands and solo founders build ecommerce stores that
+              are designed to convert — not just look good. My focus is on clear
+              UX, friction-free checkout, and systems that support growth from
+              day one.
+            </p>
+
+            <p class="text-gray-300 mt-4 leading-relaxed">
+              Over the past 4+ years, I’ve worked with founders who started on
+              off-the-shelf themes and quickly hit limitations around
+              performance, flexibility and conversion. I step in when a store
+              needs to move from “online presence” to a real sales engine.
+            </p>
+
+            <p class="text-gray-300 mt-4 leading-relaxed">
+              My work goes beyond just building pages. I think in terms of
+              customer journeys, product discovery, checkout flow and
+              post-purchase experience — the parts that actually drive revenue
+              for small ecommerce brands.
+            </p>
+
+            <p class="text-gray-300 mt-4 leading-relaxed">
+              If your store feels slow, hard to manage, or isn’t converting as
+              well as it should, I can help you simplify the setup and turn it
+              into a system that works for you instead of against you.
+            </p>
+
+            <a
+              href="#contact"
+              class="inline-block mt-8 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+            >
+              Request a Free Store Audit
+            </a>
           </div>
         </div>
       </section>
@@ -354,92 +391,72 @@
       <!-- Technologies Section -->
       <section
         id="technologies"
-        class="max-w-4xl mx-auto py-20 px-6"
+        class="max-w-7xl mx-auto py-24 px-6"
         data-aos="fade-up"
       >
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg">
-          <h2 class="text-3xl font-semibold mb-6 text-center">
-            Technologies I Use
+        <div class="bg-gray-800/80 backdrop-blur p-10 rounded-2xl shadow-xl">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">
+            Tools & Platforms I Build With
           </h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Frontend -->
-            <div>
-              <h3 class="text-2xl font-bold mb-4 text-center">
-                Frontend Technologies
-              </h3>
-              <div class="flex flex-wrap justify-center items-center gap-4">
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/react.svg"
-                    alt="React"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">React</span>
+          <p class="text-gray-400 text-center max-w-2xl mx-auto mb-12">
+            I use proven, modern tools that keep your store fast, reliable and
+            easy to grow — without locking you into brittle setups.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <!-- Storefront -->
+            <div class="text-center">
+              <h3 class="text-xl font-bold mb-6">Storefront & UX</h3>
+              <div class="flex justify-center flex-wrap gap-6">
+                <div class="tech-card">
+                  <img src="assets/react.svg" alt="React" />
+                  <span>React</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/html.svg"
-                    alt="HTML"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">HTML</span>
+                <div class="tech-card">
+                  <img src="assets/javascript.svg" alt="JavaScript" />
+                  <span>JavaScript</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/javascript.svg"
-                    alt="JavaScript"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">JavaScript</span>
-                </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/tailwind.svg"
-                    alt="Tailwind CSS"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">Tailwind CSS</span>
+                <div class="tech-card">
+                  <img src="assets/tailwind.svg" alt="Tailwind CSS" />
+                  <span>Tailwind</span>
                 </div>
               </div>
             </div>
 
-            <!-- Backend -->
-            <div>
-              <h3 class="text-2xl font-bold mb-4 text-center">
-                Backend Technologies
-              </h3>
-              <div class="flex flex-wrap justify-center items-center gap-4">
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/nodejs.svg"
-                    alt="Node.js"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">Node.js</span>
+            <!-- Commerce -->
+            <div class="text-center">
+              <h3 class="text-xl font-bold mb-6">Commerce & Payments</h3>
+              <div class="flex justify-center flex-wrap gap-6">
+                <div class="tech-card">
+                  <img src="assets/shopify.svg" alt="Shopify" />
+                  <span>Shopify</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/python.svg"
-                    alt="Python"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">Python</span>
+                <div class="tech-card">
+                  <img src="assets/stripe.svg" alt="Stripe" />
+                  <span>Stripe</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/django.svg"
-                    alt="Django"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">Django</span>
+                <div class="tech-card">
+                  <img src="assets/paypal.svg" alt="PayPal" />
+                  <span>PayPal</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <img
-                    src="assets/docker.svg"
-                    alt="Docker"
-                    class="w-16 h-16 object-contain bg-white shadow-lg rounded-md"
-                  />
-                  <span class="mt-2 text-sm">Docker</span>
+              </div>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="text-center">
+              <h3 class="text-xl font-bold mb-6">Infrastructure & Backend</h3>
+              <div class="flex justify-center flex-wrap gap-6">
+                <div class="tech-card">
+                  <img src="assets/nodejs.svg" alt="Node.js" />
+                  <span>Node.js</span>
+                </div>
+                <div class="tech-card">
+                  <img src="assets/python.svg" alt="Python" />
+                  <span>Python</span>
+                </div>
+                <div class="tech-card">
+                  <img src="assets/docker.svg" alt="Docker" />
+                  <span>Docker</span>
                 </div>
               </div>
             </div>
@@ -450,108 +467,101 @@
       <!-- Contact Section -->
       <section
         id="contact"
-        class="max-w-4xl mx-auto py-20 px-6"
+        class="max-w-7xl mx-auto py-24 px-6"
         data-aos="fade-up"
       >
-        <div class="bg-gray-800 p-8 rounded-lg shadow-lg text-center">
-          <h2 class="text-3xl font-semibold mb-4">
-            Request a Free Ordering Audit
-          </h2>
-          <p class="text-gray-400 mb-8">
-            Tell me a little about your current ordering process and I’ll review
-            where automation could reduce admin work, improve customer
-            experience and increase repeat sales.
-          </p>
+        <div class="bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Left: Context & Trust -->
+            <div class="lg:col-span-5">
+              <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+                Free Ecommerce Store Audit
+              </h2>
 
-          <form id="contact-form" class="space-y-4 max-w-xl mx-auto">
-            <input
-              type="text"
-              name="company"
-              placeholder="Company Name"
-              class="w-full p-3 rounded bg-gray-700 text-white"
-              required
-            />
-            <input
-              type="text"
-              name="role"
-              placeholder="Your Role (e.g. Managing Director, Operations Manager)"
-              class="w-full p-3 rounded bg-gray-700 text-white"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Work Email"
-              class="w-full p-3 rounded bg-gray-700 text-white"
-              required
-            />
-            <select
-              name="volume"
-              class="w-full p-3 rounded bg-gray-700 text-white"
-              required
-            >
-              <option value="">Monthly Order Volume</option>
-              <option>Under 100</option>
-              <option>100 – 500</option>
-              <option>500 – 2,000</option>
-              <option>2,000+</option>
-            </select>
-            <textarea
-              name="problem"
-              rows="4"
-              placeholder="What is the biggest headache in your current ordering process?"
-              class="w-full p-3 rounded bg-gray-700 text-white"
-              required
-            ></textarea>
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                I’ll review your store and highlight exactly where you’re losing
+                sales — from confusing product pages to checkout friction and
+                slow load times.
+              </p>
 
-            <button
-              type="submit"
-              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition"
-            >
-              Request Audit
-            </button>
-            <p id="form-status" class="text-sm text-gray-400 mt-4"></p>
-            <p class="text-gray-500 text-sm mt-4">
-              I personally review every request and reply within 1 business day.
-            </p>
-          </form>
+              <p class="text-gray-400 mb-8">
+                You’ll get clear, practical feedback you can act on immediately.
+                No fluff, no pressure to hire me.
+              </p>
+
+              <ul class="space-y-3 text-gray-300 text-sm">
+                <li>• Conversion & checkout review</li>
+                <li>• UX and mobile usability issues</li>
+                <li>• Speed & performance red flags</li>
+                <li>• Simple, prioritised improvement list</li>
+              </ul>
+            </div>
+
+            <!-- Right: Form -->
+            <div class="lg:col-span-7">
+              <form
+                id="contact-form"
+                action="#"
+                method="post"
+                class="bg-gray-900/60 p-8 rounded-xl space-y-5 max-w-2xl ml-auto"
+              >
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Brand / Store Name"
+                    class="w-full p-3 rounded bg-gray-700 text-white"
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    class="w-full p-3 rounded bg-gray-700 text-white"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="website"
+                    tabindex="-1"
+                    autocomplete="off"
+                    class="hidden"
+                  />
+                </div>
+
+                <textarea
+                  rows="4"
+                  name="issues"
+                  placeholder="What’s your biggest issue right now?"
+                  class="w-full p-3 rounded bg-gray-700 text-white"
+                  required
+                ></textarea>
+
+                <button
+                  type="submit"
+                  class="w-full bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+                >
+                  Request Audit
+                </button>
+                <p
+                  id="form-status"
+                  class="text-sm text-gray-400 text-center mt-3"
+                ></p>
+
+                <p class="text-xs text-gray-400 text-center mt-2">
+                  I personally review every request and usually reply within 24
+                  hours.
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-20">
-      <div
-        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center"
-      >
-        <div class="flex space-x-6">
-          <a
-            href="#home"
-            class="text-gray-300 hover:text-indigo-200 transition duration-200"
-            >Home</a
-          >
-          <a
-            href="#projects"
-            class="text-gray-300 hover:text-indigo-200 transition duration-200"
-            >Projects</a
-          >
-          <a
-            href="#about"
-            class="text-gray-300 hover:text-indigo-200 transition duration-200"
-            >About</a
-          >
-          <a
-            href="#services"
-            class="text-gray-300 hover:text-indigo-200 transition duration-200"
-            >Services</a
-          >
-          <a
-            href="#contact"
-            class="text-gray-300 hover:text-indigo-200 transition duration-200"
-            >Contact</a
-          >
-        </div>
-      </div>
+    <footer class="bg-gray-800 py-10 text-center text-gray-400">
+      © 2026 Hamza Mohammed — Ecommerce Developer for Small Brands
     </footer>
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>

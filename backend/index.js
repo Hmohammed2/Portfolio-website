@@ -64,15 +64,17 @@ app.use(
     methods: ["POST"],
     allowedHeaders: ["Content-Type"],
     credentials: false,
-  })
+  }),
 );
 app.use(express.json());
 // Serve static files from the
 // API Endpoint to send emails
 app.post("/api/send-email", async (req, res) => {
-  const { name, email, company, role, volume, message } = req.body;
+  console.log("RAW BODY:", req.body);
+  console.log("HEADERS:", req.headers["content-type"]);
+  const { name, email, issues } = req.body;
 
-  if (!company || !email || !message) {
+  if (!name || !email) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
@@ -100,12 +102,9 @@ app.post("/api/send-email", async (req, res) => {
                 <p>You have received a new message from your website contact form.</p>
                 <div class="details">
                     <p><strong>Name:</strong> ${name}</p>
-                    <p><strong>Company:</strong> ${company}</p>
-                    <p><strong>Role:</strong> ${role}</p>
-                    <p><strong>Company Volume:</strong> ${volume}</p>
                     <p><strong>Email:</strong> ${email}</p>
                     <p><strong>Message:</strong></p>
-                    <p>${message}</p>
+                    <p>${issues}</p>
                 </div>
             </div>
         </body>
@@ -115,9 +114,9 @@ app.post("/api/send-email", async (req, res) => {
   try {
     await sendEmail(
       "hamza_mohammed15@hotmail.com",
-      `New Lead – ${company}`,
-      `Name: ${name}\nEmail: ${email}\nMessage:\n${message}`,
-      htmlContent
+      `New Lead – ${email}`,
+      `Name: ${name}\nEmail: ${email}\nMessage:\n${issues}`,
+      htmlContent,
     );
 
     res.json({ success: true });

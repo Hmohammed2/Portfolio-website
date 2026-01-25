@@ -1,42 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>ArcadeStickLabs Case Study | Custom B2B E-Commerce Platform</title>
+    <title>
+      ArcadeStickLabs Ecommerce Case Study | Small Brand Store Built for
+      Conversion
+    </title>
+
     <meta
       name="description"
-      content="How a custom-built ordering platform replaced manual processes and created scalable infrastructure for a growing parts supplier."
+      content="How ArcadeStickLabs grew from manual sales to a high-converting ecommerce store with faster checkout, repeat ordering and scalable product management."
+    />
+
+    <link
+      rel="canonical"
+      href="https://hamzamohammed.com/case-studies/arcadesticklabs"
     />
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CaseStudy",
+        "name": "ArcadeStickLabs Ecommerce Case Study",
+        "description": "How a small ecommerce brand moved from manual sales to a fast, conversion-focused online store built for repeat customers and growth.",
+        "url": "https://hamzamohammed.com/case-studies/arcadesticklabs",
+        "author": {
+          "@type": "Person",
+          "name": "Hamza Mohammed",
+          "url": "https://hamzamohammed.com"
+        },
+        "about": {
+          "@type": "Organization",
+          "name": "ArcadeStickLabs",
+          "url": "https://arcadesticklabs.co.uk"
+        },
+        "keywords": [
+          "ecommerce case study",
+          "small brand ecommerce",
+          "custom ecommerce development",
+          "conversion focused ecommerce",
+          "online store optimisation"
+        ]
+      }
+    </script>
   </head>
 
   <body class="bg-gray-900 text-white">
-    <nav class="w-full shadow-lg bg-gray-800 bg-opacity-50 fixed top-0 z-50">
+    <!-- NAVBAR -->
+    <nav
+      class="fixed top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-900/80 to-gray-900/40 backdrop-blur z-50"
+    >
       <div
-        class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center"
+        class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between"
       >
-        <!-- Left: Brand -->
+        <!-- Brand -->
         <a href="/" class="text-2xl font-bold">HamzaM</a>
 
-        <!-- Right: Actions -->
-        <div class="flex items-center gap-3">
-          <a
-            href="/"
-            class="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-semibold"
-          >
-            Home
-          </a>
+        <!-- Desktop Nav -->
+        <ul class="hidden md:flex items-center gap-6 text-gray-300">
+          <li><a href="/#projects" class="hover:text-white">Work</a></li>
+          <li><a href="/#services" class="hover:text-white">Services</a></li>
+          <li><a href="/#about" class="hover:text-white">About</a></li>
+          <li>
+            <a
+              href="/#contact"
+              class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold"
+            >
+              Free Store Audit
+            </a>
+          </li>
+        </ul>
 
-          <a
-            href="/#contact"
-            class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold"
+        <!-- Mobile Toggle -->
+        <button
+          id="menu-toggle"
+          class="md:hidden text-gray-300 hover:text-white"
+          aria-label="Open menu"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            Request Free Audit
-          </a>
-        </div>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="nav-menu"
+        class="hidden md:hidden bg-gray-900/95 backdrop-blur border-t border-gray-800"
+      >
+        <ul class="flex flex-col px-6 py-6 space-y-4 text-gray-300">
+          <li><a href="/#projects" class="block hover:text-white">Work</a></li>
+          <li>
+            <a href="/#services" class="block hover:text-white">Services</a>
+          </li>
+          <li><a href="/#about" class="block hover:text-white">About</a></li>
+          <li>
+            <a
+              href="/#contact"
+              class="inline-block bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold"
+            >
+              Free Store Audit
+            </a>
+          </li>
+        </ul>
       </div>
     </nav>
 
@@ -44,22 +123,12 @@
       <!-- HERO -->
       <section class="max-w-5xl mx-auto px-6 py-16 text-center">
         <h1 class="text-4xl md:text-5xl font-bold mb-4">
-          Case Study - ArcadeStickLabs
+          Ecommerce Case Study: ArcadeStickLabs
         </h1>
-        <div class="flex items-center justify-center gap-3 mt-3">
-          <img
-            src="/assets/arcadesticklabs-logo.webp"
-            class="h-8 opacity-80"
-            alt="ArcadeStickLabs logo"
-          />
-          <span class="text-gray-400 text-sm"
-            >Live production commerce platform</span
-          >
-        </div>
+
         <p class="text-gray-400 max-w-3xl mx-auto text-lg">
-          How a custom-built e-commerce ordering platform replaced manual
-          processes, improved repeat ordering and created scalable
-          infrastructure for a growing parts supplier.
+          How a small ecommerce brand moved from manual sales to a fast,
+          conversion-focused online store built for repeat customers and growth.
         </p>
 
         <div class="mt-6">
@@ -68,104 +137,88 @@
             target="_blank"
             class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300 underline text-lg"
           >
-            Visit Live Site
-            <svg
-              class="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M14 3h7v7m0-7L10 14m-7 7h7v-7"
-              />
-            </svg>
+            Visit Live Store
           </a>
         </div>
 
-        <!-- Hero Image -->
         <div
           class="mt-10 rounded-xl overflow-hidden shadow-lg border border-gray-800"
         >
           <img
             src="/assets/case-studies/case-hero-arcadesticklabs.webp"
             class="w-full object-cover h-[380px]"
-            alt="Project overview"
+            alt="ArcadeStickLabs ecommerce store"
           />
         </div>
       </section>
 
-      <!-- ARTICLE -->
+      <!-- CONTENT -->
       <article class="max-w-4xl mx-auto px-6 space-y-24">
         <!-- PROBLEM -->
         <section>
-          <h2 class="text-3xl font-bold mb-4">The Problem</h2>
-          <p class="text-gray-400 text-lg mb-8">
-            ArcadeStickLabs needed a scalable online ordering platform capable
-            of handling complex product variants, fast repeat ordering workflows
-            and future B2B trade expansion.
+          <h2 class="text-3xl font-bold mb-4">The Challenge</h2>
+
+          <p class="text-gray-400 text-lg mb-6">
+            ArcadeStickLabs started as a passion-driven brand but quickly hit
+            limitations with manual ordering, slow checkout flow and product
+            management friction.
           </p>
 
-          <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="grid md:grid-cols-2 gap-10 items-center">
             <p class="text-gray-400">
-              Off-the-shelf platforms could not support the SKU logic, ordering
-              workflows and performance requirements. Manual admin processes
-              slowed fulfilment and limited growth.
+              Off-the-shelf ecommerce setups struggled with product variants,
+              bundles and repeat purchasing. This created unnecessary admin work
+              and limited the brand’s ability to scale efficiently.
             </p>
 
-            <!-- Problem Image -->
             <img
               src="/assets/case-studies/case-cart.webp"
+              alt="Inefficient ecommerce cart experience"
               class="rounded-xl shadow-lg border border-gray-800"
-              alt="Manual ordering"
+              loading="lazy"
             />
           </div>
         </section>
 
         <!-- SOLUTION -->
         <section>
-          <h2 class="text-3xl font-bold mb-4">The Solution</h2>
+          <h2 class="text-3xl font-bold mb-6">The Solution</h2>
 
-          <div class="grid md:grid-cols-2 gap-8 items-center mb-8">
+          <div class="grid md:grid-cols-2 gap-10 items-center mb-10">
             <img
               src="/assets/case-studies/case-product.webp"
+              alt="Custom ecommerce product and variant system"
               class="rounded-xl shadow-lg border border-gray-800"
-              alt="Custom platform"
+              loading="lazy"
             />
 
             <ul class="text-gray-400 space-y-3 list-disc list-inside">
-              <li>
-                Next.js storefront built for speed & mobile repeat ordering
-              </li>
-              <li>Advanced SKU & variant logic</li>
-              <li>Secure payments & checkout</li>
-              <li>Custom admin dashboard</li>
-              <li>Scalable API backend</li>
-              <li>ERP & accounting integration ready</li>
+              <li>Custom-built ecommerce storefront focused on speed & UX</li>
+              <li>Flexible product variants and bundle logic</li>
+              <li>Optimised checkout with Stripe payments</li>
+              <li>Admin tooling to simplify order fulfilment</li>
+              <li>SEO-friendly product and category pages</li>
             </ul>
           </div>
         </section>
 
         <!-- RESULT -->
         <section>
-          <h2 class="text-3xl font-bold mb-4">The Result</h2>
+          <h2 class="text-3xl font-bold mb-6">The Results</h2>
 
-          <div class="grid md:grid-cols-2 gap-8 items-center">
+          <div class="grid md:grid-cols-2 gap-10 items-center">
             <ul class="text-gray-400 space-y-3 list-disc list-inside">
-              <li>Reduced admin workload</li>
-              <li>Improved checkout conversion</li>
-              <li>Fast mobile ordering for repeat customers</li>
-              <li>Scalable architecture for catalogue growth</li>
-              <li>B2B trade expansion ready</li>
+              <li>Smoother checkout experience</li>
+              <li>Reduced manual admin work</li>
+              <li>Faster repeat ordering for returning customers</li>
+              <li>Scalable store architecture for new product launches</li>
             </ul>
 
-            <!-- Result Image -->
             <img
               src="/assets/case-studies/case-checkout.webp"
+              alt="Optimised ecommerce checkout flow"
               class="rounded-xl shadow-lg border border-gray-800"
-              alt="Results dashboard"
+              loading="lazy"
             />
           </div>
         </section>
@@ -174,32 +227,43 @@
         <section class="bg-gray-800 rounded-xl p-10 text-center">
           <h2 class="text-3xl font-bold mb-4">Who This Is For</h2>
           <p class="text-gray-400 max-w-2xl mx-auto text-lg">
-            This system is ideal for UK manufacturers, wholesalers and trade
-            suppliers who need account pricing, bulk ordering, ERP integration
-            and automated repeat purchasing.
+            This approach is ideal for small ecommerce brands that have outgrown
+            basic templates and want a faster, cleaner store that actually
+            converts visitors into customers.
           </p>
         </section>
 
         <!-- CTA -->
         <section class="text-center py-20">
-          <h2 class="text-4xl font-bold mb-6">Request a Free Ordering Audit</h2>
+          <h2 class="text-4xl font-bold mb-6">
+            Want a Store That Converts Better?
+          </h2>
           <p class="text-gray-400 max-w-2xl mx-auto mb-8 text-lg">
-            If your business still processes orders via email, spreadsheets or
-            PDFs, I can review your workflow and outline where automation could
-            save time and increase repeat sales.
+            I offer free ecommerce store audits to highlight where you’re losing
+            sales and what to fix first.
           </p>
           <a
             href="/#contact"
             class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg"
           >
-            Request Free Audit
+            Request Free Store Audit
           </a>
         </section>
       </article>
     </main>
 
     <footer class="bg-gray-800 py-10 text-center text-gray-400">
-      © 2025 Hamza Mohammed
+      © 2026 Hamza Mohammed — Ecommerce Developer for Small Brands
     </footer>
+
+    <!-- NAV JS -->
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("nav-menu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("hidden");
+      });
+    </script>
   </body>
 </html>

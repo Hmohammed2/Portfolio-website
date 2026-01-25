@@ -18,12 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
     setStatus("Sending...");
 
     const formData = {
-      name: form.company.value,
-      company: form.company.value,
-      role: form.role.value,
-      volume: form.volume.value,
+      name: form.name.value,
       email: form.email.value,
-      message: form.problem.value,
+      issues: form.issues.value,
+      website: form.website.value || "", // honeypot
     };
 
     try {
