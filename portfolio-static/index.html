@@ -8,7 +8,6 @@
       Ecommerce Developer for Small Brands | High-Converting Online Stores
     </title>
 
-    <!-- Primary SEO -->
     <meta
       name="description"
       content="I help small brands and solo founders build high-converting ecommerce stores that turn visitors into customers. Custom Shopify and headless ecommerce solutions focused on sales, speed and scalability."
@@ -20,7 +19,6 @@
     <meta name="author" content="Hamza Mohammed" />
     <link rel="canonical" href="https://hamzamohammed.com/" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hamzamohammed.com/" />
     <meta
@@ -36,7 +34,6 @@
       content="https://hamzamohammed.com/assets/HamzaM.webp"
     />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://hamzamohammed.com/" />
     <meta name="twitter:title" content="Ecommerce Developer for Small Brands" />
@@ -49,7 +46,6 @@
       content="https://hamzamohammed.com/assets/HamzaM.webp"
     />
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -68,18 +64,43 @@
       }
     </script>
 
-    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- AOS -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: linear-gradient(
+          to bottom,
+          #020617 0%,
+          #0f172a 35%,
+          #111827 100%
+        );
+        color: #f8fafc;
+      }
+
+      .section-shell {
+        background: rgba(31, 41, 55, 0.55);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .glass-card {
+        background: rgba(17, 24, 39, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
       .tech-card {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
       }
+
       .tech-card img {
         width: 64px;
         height: 64px;
@@ -89,26 +110,57 @@
         border-radius: 0.75rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
       }
+
       .tech-card span {
         font-size: 0.875rem;
         color: #e5e7eb;
       }
+
+      .gradient-border {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .gradient-border::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        padding: 1px;
+        border-radius: inherit;
+        background: linear-gradient(
+          135deg,
+          rgba(96, 165, 250, 0.4),
+          rgba(168, 85, 247, 0.3)
+        );
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .stat-pill {
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
     </style>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   </head>
 
-  <body class="bg-gray-900 text-white">
-    <!-- Navbar -->
+  <body>
     <nav
-      class="fixed top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-900/80 to-gray-900/40 backdrop-blur z-50"
+      class="fixed top-0 left-0 w-full h-20 bg-gradient-to-b from-gray-950/90 to-gray-950/50 backdrop-blur z-50 border-b border-white/5"
     >
       <div
         class="max-w-7xl mx-auto px-6 h-full flex items-center justify-between"
       >
-        <!-- Logo -->
         <span class="text-xl font-bold">HamzaM</span>
 
-        <!-- Desktop Nav -->
         <ul class="hidden md:flex items-center gap-6 text-gray-300">
           <li><a href="#projects" class="hover:text-white">Work</a></li>
           <li><a href="#services" class="hover:text-white">Services</a></li>
@@ -116,14 +168,13 @@
           <li>
             <a
               href="#contact"
-              class="bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-600"
+              class="bg-indigo-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-600 transition"
             >
               Free Store Audit
             </a>
           </li>
         </ul>
 
-        <!-- Mobile Menu Button -->
         <button
           id="menu-toggle"
           class="md:hidden text-gray-300 hover:text-white focus:outline-none"
@@ -146,25 +197,20 @@
         </button>
       </div>
 
-      <!-- Mobile Nav Menu -->
       <div
         id="nav-menu"
-        class="hidden md:hidden bg-gray-900/95 backdrop-blur border-t border-gray-800"
+        class="hidden md:hidden bg-gray-950/95 backdrop-blur border-t border-gray-800"
       >
         <ul class="flex flex-col px-6 py-6 space-y-4 text-gray-300">
-          <li>
-            <a href="#projects" class="block hover:text-white">Work</a>
-          </li>
+          <li><a href="#projects" class="block hover:text-white">Work</a></li>
           <li>
             <a href="#services" class="block hover:text-white">Services</a>
           </li>
-          <li>
-            <a href="#about" class="block hover:text-white">About</a>
-          </li>
+          <li><a href="#about" class="block hover:text-white">About</a></li>
           <li>
             <a
               href="#contact"
-              class="inline-block bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold hover:bg-yellow-600"
+              class="inline-block bg-indigo-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-600 transition"
             >
               Free Store Audit
             </a>
@@ -173,11 +219,9 @@
       </div>
     </nav>
 
-    <!-- Main Content -->
     <main class="pt-20 md:pt-24">
-      <!-- Hero Section -->
+      <!-- HERO SECTION -->
       <section class="relative overflow-hidden pt-20 pb-24 px-6">
-        <!-- Background Image (extends under navbar) -->
         <div
           class="absolute inset-x-0 top-0 -z-10 h-full bg-cover bg-center"
           style="
@@ -185,119 +229,296 @@
           "
         ></div>
 
-        <!-- Overlay -->
         <div
-          class="absolute inset-0 -z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/70 to-gray-900/90"
+          class="absolute inset-0 -z-10 bg-gradient-to-b from-gray-950/80 via-gray-950/72 to-gray-950/92"
         ></div>
 
-        <!-- Content -->
-        <div class="relative max-w-4xl mx-auto text-center">
-          <span
-            class="inline-block px-4 py-2 bg-gray-800/80 backdrop-blur rounded-full text-sm mb-6"
-          >
-            Ecommerce Developer for Small Brands
-          </span>
+        <div class="relative max-w-5xl mx-auto text-center">
+          <div class="flex items-center justify-center gap-4 mb-8 flex-wrap">
+            <span
+              class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/15 text-indigo-200 border border-indigo-400/20 rounded-full text-sm"
+            >
+              <i data-lucide="zap" class="w-4 h-4"></i>
+              Shopify Developer
+            </span>
 
-          <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-            I Build Ecommerce Stores<br />
-            <span class="text-blue-400">That Actually Convert</span>
+            <span
+              class="inline-flex items-center gap-2 px-4 py-2 bg-amber-500/15 text-amber-200 border border-amber-400/20 rounded-full text-sm"
+            >
+              <i data-lucide="award" class="w-4 h-4"></i>
+              Rising Talent on Upwork
+            </span>
+
+            <!--
+              <span
+                class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/15 text-emerald-200 border border-emerald-400/20 rounded-full text-sm"
+              >
+                <i data-lucide="award" class="w-4 h-4"></i>
+                Top Rated on Upwork
+              </span>
+              -->
+          </div>
+
+          <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            Launch Faster.<br />
+            <span class="text-indigo-400">Convert Better.</span>
           </h1>
 
-          <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            I help small brands and solo founders launch fast, high-converting
-            ecommerce stores — without bloated themes, clunky checkouts or tech
-            headaches.
+          <p class="text-lg md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+            I help small brands and solo founders build ecommerce stores that
+            sell better — with faster storefronts, cleaner UX and less checkout
+            friction.
           </p>
 
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <a
               href="#contact"
-              class="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+              class="inline-flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-bold transition"
             >
               Request a Free Audit
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
+
             <a
               href="#services"
-              class="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-lg font-bold transition backdrop-blur text-black"
+              class="bg-transparent px-6 py-3 rounded-lg font-bold transition backdrop-blur text-white border border-gray-500 hover:border-gray-300"
             >
               How I Help
             </a>
           </div>
+
+          <p class="text-sm text-gray-400 mb-10">
+            Practical feedback. No fluff. Usually delivered within 48 hours.
+          </p>
+
+          <div
+            class="flex items-center justify-center gap-4 md:gap-6 flex-wrap"
+          >
+            <!-- <div
+              class="rounded-full px-4 py-2 text-sm text-gray-200 inline-flex items-center gap-2 bg-gray-900/70 border border-white/10"
+            >
+              <i
+                data-lucide="check-circle-2"
+                class="w-4 h-4 text-emerald-400"
+              ></i>
+              Top Rated on Upwork
+            </div> -->
+            <div
+              class="rounded-full px-4 py-2 text-sm text-gray-200 inline-flex items-center gap-2 bg-gray-900/70 border border-white/10"
+            >
+              <i
+                data-lucide="check-circle-2"
+                class="w-4 h-4 text-emerald-400"
+              ></i>
+              Rising Talent on Upwork
+            </div>
+
+            <div
+              class="rounded-full px-4 py-2 text-sm text-gray-200 inline-flex items-center gap-2 bg-gray-900/70 border border-white/10"
+            >
+              <i
+                data-lucide="check-circle-2"
+                class="w-4 h-4 text-emerald-400"
+              ></i>
+              100% Job Success
+            </div>
+
+            <div
+              class="rounded-full px-4 py-2 text-sm text-gray-200 inline-flex items-center gap-2 bg-gray-900/70 border border-white/10"
+            >
+              <i
+                data-lucide="check-circle-2"
+                class="w-4 h-4 text-emerald-400"
+              ></i>
+              10+ Projects Completed
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Services Section -->
+      <!-- Values and Approach -->
+      <section
+        class="max-w-6xl mx-auto px-6 -mt-8 relative z-10"
+        data-aos="fade-up"
+      >
+        <div
+          class="section-shell gradient-border rounded-2xl p-6 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
+        >
+          <div>
+            <p class="text-3xl font-bold text-indigo-300 mb-1">Fast</p>
+            <p class="text-gray-300">
+              Lean builds that do not bury you in app bloat and theme clutter.
+            </p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-indigo-300 mb-1">Practical</p>
+            <p class="text-gray-300">
+              Focused on buying flow, trust, speed and day-to-day store
+              management.
+            </p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-indigo-300 mb-1">Built to Sell</p>
+            <p class="text-gray-300">
+              Not just something that looks polished in screenshots but
+              underperforms in reality.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
       <section
         id="services"
         class="max-w-7xl mx-auto py-20 px-6"
         data-aos="fade-up"
       >
-        <h2 class="text-3xl font-semibold text-center mb-12">
-          How I Help Small Ecommerce Brands
-        </h2>
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <h2 class="text-3xl md:text-4xl font-semibold mb-4">
+            How I Help Small Ecommerce Brands
+          </h2>
+          <p class="text-gray-400 text-lg">
+            The goal is not more features for the sake of it. The goal is a
+            store that is easier to run and easier for customers to buy from.
+          </p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-gray-800 p-6 rounded-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+          <div class="glass-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-500/15 text-indigo-300 flex items-center justify-center mb-4"
+            >
+              <i data-lucide="zap" class="w-6 h-6"></i>
+            </div>
             <h3 class="text-xl font-bold mb-2">Store Builds & Redesigns</h3>
             <p class="text-gray-400">
-              Clean, fast ecommerce stores built to convert — not generic themes
-              that look nice but don’t sell.
+              Clean storefronts built to support conversion, speed and easier
+              long-term maintenance.
             </p>
           </div>
 
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div class="glass-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-emerald-500/15 text-emerald-300 flex items-center justify-center mb-4"
+            >
+              <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+            </div>
             <h3 class="text-xl font-bold mb-2">Checkout & Conversion Fixes</h3>
             <p class="text-gray-400">
-              Improve cart flow, reduce drop-offs and increase completed
-              checkouts.
+              Reduce hesitation, clean up friction points and improve the path
+              from product page to purchase.
             </p>
           </div>
 
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div class="glass-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-purple-500/15 text-purple-300 flex items-center justify-center mb-4"
+            >
+              <i data-lucide="dollar-sign" class="w-6 h-6"></i>
+            </div>
             <h3 class="text-xl font-bold mb-2">Payments & Automations</h3>
             <p class="text-gray-400">
-              Stripe, PayPal, order confirmations, inventory sync and fulfilment
-              automation.
+              Stripe, PayPal, order flows, fulfilment logic and backend
+              automation where off-the-shelf setups fall short.
             </p>
           </div>
 
-          <div class="bg-gray-800 p-6 rounded-lg">
+          <div class="glass-card rounded-2xl p-6">
+            <div
+              class="w-12 h-12 rounded-xl bg-sky-500/15 text-sky-300 flex items-center justify-center mb-4"
+            >
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
             <h3 class="text-xl font-bold mb-2">Ongoing Optimisation</h3>
             <p class="text-gray-400">
-              Small iterative improvements that compound into more revenue over
-              time.
+              Small, targeted improvements that compound into a better buying
+              experience and more revenue.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Projects Section -->
+      <!-- BENEFITS -->
+      <section class="max-w-7xl mx-auto py-4 px-6" data-aos="fade-up">
+        <div
+          class="rounded-3xl bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-12 md:px-14"
+        >
+          <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-semibold text-center mb-10">
+              What You Actually Get
+            </h2>
+            <div class="grid md:grid-cols-2 gap-5 text-white">
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Mobile-first storefront design</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Cleaner product and checkout flows</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Speed and performance improvements</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Analytics and conversion tracking setup</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Payment, fulfilment or app integration support</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <i
+                  data-lucide="check-circle-2"
+                  class="w-5 h-5 mt-1 flex-shrink-0"
+                ></i
+                ><span>Advice grounded in real ecommerce constraints</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASE STUDIES/PROJECTS -->
       <section
         id="projects"
         class="max-w-7xl mx-auto py-16 px-6"
         data-aos="fade-up"
       >
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <!-- Left: Text + CTA -->
           <div class="lg:col-span-4">
             <h2 class="text-3xl font-semibold mb-4">Selected Ecommerce Work</h2>
-
             <p class="text-gray-400 mb-6">
-              Real ecommerce stores built for small brands — focused on
-              conversion, performance and clean UX, not just visuals.
+              Real ecommerce work focused on conversion, performance and
+              operational clarity. This matters more than throwing another
+              glossy template at the problem.
             </p>
-
             <a
               href="#contact"
-              class="inline-block bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+              class="inline-flex items-center gap-2 bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-bold transition"
             >
               Request a Free Audit
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
           </div>
 
-          <!-- Right: Carousel -->
           <div class="relative lg:col-span-8">
-            <!-- Left Arrow -->
             <button
               id="prev-project"
               class="absolute -left-4 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-20"
@@ -305,17 +526,13 @@
               &#10094;
             </button>
 
-            <!-- Viewport -->
             <div class="overflow-hidden w-full" id="projects-container">
               <div
                 id="projects-track"
                 class="flex gap-6 transition-transform duration-500 ease-in-out"
-              >
-                <!-- JS will insert cards here -->
-              </div>
+              ></div>
             </div>
 
-            <!-- Right Arrow -->
             <button
               id="next-project"
               class="absolute -right-4 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 transition z-20"
@@ -326,26 +543,78 @@
         </div>
       </section>
 
-      <!-- About Section -->
+      <!-- TESTIMONIALS -->
+      <section class="max-w-7xl mx-auto py-10 px-6" data-aos="fade-up">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex gap-1 mb-4 text-yellow-400">
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+            </div>
+            <p class="text-gray-300 mb-6">
+              “Excellent outcome. Will work with Hamza again. Thank you Hamza!”
+            </p>
+            <div class="text-sm text-gray-400">
+              Client feedback - Lewis Buttle
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex gap-1 mb-4 text-yellow-400">
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+            </div>
+            <p class="text-gray-300 mb-6">
+              “Freelancer is awesome. Went beyond to layout a solution that was
+              an annual issue and proposed solution to make it a one and done
+              fix.”
+            </p>
+            <div class="text-sm text-gray-400">
+              Client feedback - Simon Petrov
+            </div>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex gap-1 mb-4 text-yellow-400">
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+              <i data-lucide="star" class="w-5 h-5 fill-yellow-400"></i>
+            </div>
+            <p class="text-gray-300 mb-6">
+              "Very accurate and fast—excellently data processing skills"
+            </p>
+            <div class="text-sm text-gray-400">
+              Client feedback - Hatem Tolba
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT ME -->
       <section
         id="about"
         class="max-w-7xl mx-auto py-24 px-6"
         data-aos="fade-up"
       >
         <div
-          class="bg-gray-800/80 backdrop-blur p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-12"
+          class="section-shell p-10 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-12"
         >
-          <!-- Image -->
           <div class="md:w-1/3 flex justify-center">
             <img
               src="assets/HamzaM.webp"
               alt="Hamza Mohammed ecommerce developer"
-              class="w-64 h-64 md:w-72 md:h-72 rounded-2xl object-cover shadow-lg"
+              class="w-64 h-auto md:w-72 rounded-2xl shadow-lg object-contain"
               loading="lazy"
             />
           </div>
-
-          <!-- Text Content -->
           <div class="md:w-2/3">
             <h2 class="text-3xl md:text-4xl font-semibold mb-6">
               Hi, I’m Hamza
@@ -380,7 +649,7 @@
 
             <a
               href="#contact"
-              class="inline-block mt-8 bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
+              class="inline-block mt-8 bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-bold transition"
             >
               Request a Free Store Audit
             </a>
@@ -388,13 +657,13 @@
         </div>
       </section>
 
-      <!-- Technologies Section -->
+      <!-- TECHNOLOGIES -->
       <section
         id="technologies"
         class="max-w-7xl mx-auto py-24 px-6"
         data-aos="fade-up"
       >
-        <div class="bg-gray-800/80 backdrop-blur p-10 rounded-2xl shadow-xl">
+        <div class="section-shell p-10 rounded-2xl shadow-xl">
           <h2 class="text-3xl md:text-4xl font-semibold mb-4 text-center">
             Tools & Platforms I Build With
           </h2>
@@ -404,7 +673,6 @@
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <!-- Storefront -->
             <div class="text-center">
               <h3 class="text-xl font-bold mb-6">Storefront & UX</h3>
               <div class="flex justify-center flex-wrap gap-6">
@@ -423,7 +691,6 @@
               </div>
             </div>
 
-            <!-- Commerce -->
             <div class="text-center">
               <h3 class="text-xl font-bold mb-6">Commerce & Payments</h3>
               <div class="flex justify-center flex-wrap gap-6">
@@ -442,7 +709,6 @@
               </div>
             </div>
 
-            <!-- Infrastructure -->
             <div class="text-center">
               <h3 class="text-xl font-bold mb-6">Infrastructure & Backend</h3>
               <div class="flex justify-center flex-wrap gap-6">
@@ -464,62 +730,143 @@
         </div>
       </section>
 
-      <!-- Contact Section -->
+      <!-- CONTACT & FREE AUDIT -->
       <section
         id="contact"
-        class="max-w-7xl mx-auto py-24 px-6"
+        class="max-w-7xl mx-auto py-16 md:py-24 px-4 sm:px-6"
         data-aos="fade-up"
       >
-        <div class="bg-gray-800/80 backdrop-blur rounded-2xl shadow-xl p-10">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <!-- Left: Context & Trust -->
+        <div class="section-shell rounded-2xl shadow-xl p-5 sm:p-8 lg:p-10">
+          <div
+            class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start"
+          >
             <div class="lg:col-span-5">
-              <h2 class="text-3xl md:text-4xl font-semibold mb-6">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-semibold mb-5 sm:mb-6"
+              >
                 Free Ecommerce Store Audit
               </h2>
 
-              <p class="text-gray-300 mb-6 leading-relaxed">
-                I’ll review your store and highlight exactly where you’re losing
-                sales — from confusing product pages to checkout friction and
-                slow load times.
+              <p
+                class="text-gray-300 mb-5 sm:mb-6 leading-relaxed text-sm sm:text-base"
+              >
+                I’ll review your store and show you where sales are being lost —
+                whether that is product page friction, weak trust signals,
+                mobile UX issues or a messy checkout path.
               </p>
 
-              <p class="text-gray-400 mb-8">
-                You’ll get clear, practical feedback you can act on immediately.
-                No fluff, no pressure to hire me.
+              <p
+                class="text-gray-400 mb-6 sm:mb-8 text-sm sm:text-base leading-relaxed"
+              >
+                You’ll get practical feedback you can act on. Not vague advice.
+                Not a padded report full of filler.
               </p>
 
-              <ul class="space-y-3 text-gray-300 text-sm">
-                <li>• Conversion & checkout review</li>
-                <li>• UX and mobile usability issues</li>
-                <li>• Speed & performance red flags</li>
-                <li>• Simple, prioritised improvement list</li>
+              <ul class="space-y-3 text-gray-300 text-sm sm:text-base">
+                <li class="flex items-start gap-2.5">
+                  <i
+                    data-lucide="check-circle-2"
+                    class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-emerald-400 flex-shrink-0"
+                  ></i>
+                  <span>Conversion and checkout review</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i
+                    data-lucide="check-circle-2"
+                    class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-emerald-400 flex-shrink-0"
+                  ></i>
+                  <span>UX and mobile usability issues</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i
+                    data-lucide="check-circle-2"
+                    class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-emerald-400 flex-shrink-0"
+                  ></i>
+                  <span>Speed and performance red flags</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <i
+                    data-lucide="check-circle-2"
+                    class="w-4 h-4 sm:w-5 sm:h-5 mt-0.5 text-emerald-400 flex-shrink-0"
+                  ></i>
+                  <span>Prioritised next steps</span>
+                </li>
               </ul>
             </div>
 
-            <!-- Right: Form -->
             <div class="lg:col-span-7">
-              <form
-                id="contact-form"
-                action="#"
-                method="post"
-                class="bg-gray-900/60 p-8 rounded-xl space-y-5 max-w-2xl ml-auto"
+              <div
+                class="bg-gray-950/50 p-4 sm:p-6 md:p-8 rounded-xl space-y-5 max-w-2xl ml-auto border border-white/5"
               >
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div id="form-success" class="hidden text-center py-8 sm:py-10">
+                  <div
+                    class="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/15 rounded-full flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i
+                      data-lucide="check-circle-2"
+                      class="w-7 h-7 sm:w-8 sm:h-8 text-emerald-400"
+                    ></i>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-semibold mb-2">
+                    Thanks — audit request received
+                  </h3>
+                  <p class="text-gray-400 text-sm sm:text-base">
+                    I’ll review your store and get back to you with practical
+                    feedback.
+                  </p>
+                </div>
+
+                <form
+                  id="contact-form"
+                  action="#"
+                  method="post"
+                  class="space-y-4 sm:space-y-5"
+                >
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      class="w-full min-h-[48px] px-4 py-3 rounded-lg bg-gray-800 text-white border border-white/5 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      class="w-full min-h-[48px] px-4 py-3 rounded-lg bg-gray-800 text-white border border-white/5 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      required
+                    />
+                  </div>
+
                   <input
-                    type="text"
-                    name="name"
-                    placeholder="Brand / Store Name"
-                    class="w-full p-3 rounded bg-gray-700 text-white"
+                    type="url"
+                    name="store_url"
+                    placeholder="Store URL"
+                    class="w-full min-h-[48px] px-4 py-3 rounded-lg bg-gray-800 text-white border border-white/5 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     required
                   />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    class="w-full p-3 rounded bg-gray-700 text-white"
+
+                  <select
+                    name="revenue"
+                    class="w-full min-h-[48px] px-4 py-3 rounded-lg bg-gray-800 text-white border border-white/5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  >
+                    <option value="">Monthly Revenue Range</option>
+                    <option value="pre-launch">Pre-launch / $0</option>
+                    <option value="0-5k">$0 - $5k</option>
+                    <option value="5k-25k">$5k - $25k</option>
+                    <option value="25k-100k">$25k - $100k</option>
+                    <option value="100k+">$100k+</option>
+                  </select>
+
+                  <textarea
+                    rows="5"
+                    name="issues"
+                    placeholder="What’s your biggest issue right now?"
+                    class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-white/5 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     required
-                  />
+                  ></textarea>
+
                   <input
                     type="text"
                     name="website"
@@ -527,42 +874,49 @@
                     autocomplete="off"
                     class="hidden"
                   />
-                </div>
 
-                <textarea
-                  rows="4"
-                  name="issues"
-                  placeholder="What’s your biggest issue right now?"
-                  class="w-full p-3 rounded bg-gray-700 text-white"
-                  required
-                ></textarea>
+                  <button
+                    type="submit"
+                    class="w-full min-h-[52px] bg-indigo-500 hover:bg-indigo-600 px-6 py-3 rounded-lg font-bold transition inline-flex items-center justify-center gap-2"
+                  >
+                    Request Audit
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                  </button>
 
-                <button
-                  type="submit"
-                  class="w-full bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-lg font-bold transition"
-                >
-                  Request Audit
-                </button>
-                <p
-                  id="form-status"
-                  class="text-sm text-gray-400 text-center mt-3"
-                ></p>
+                  <p
+                    id="form-status"
+                    class="text-sm text-gray-400 text-center pt-1"
+                  ></p>
 
-                <p class="text-xs text-gray-400 text-center mt-2">
-                  I personally review every request and usually reply within 24
-                  hours.
-                </p>
-              </form>
+                  <div
+                    class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm text-gray-400 text-center pt-2"
+                  >
+                    <span class="inline-flex items-center gap-2">
+                      <i data-lucide="clock" class="w-4 h-4 flex-shrink-0"></i>
+                      Usually replied to within 24–48 hours
+                    </span>
+                    <span class="inline-flex items-center gap-2">
+                      <i
+                        data-lucide="check-circle-2"
+                        class="w-4 h-4 flex-shrink-0"
+                      ></i>
+                      No obligation
+                    </span>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 py-10 text-center text-gray-400">
+    <footer
+      class="bg-gray-950/40 py-10 text-center text-gray-400 border-t border-white/5"
+    >
       © 2026 Hamza Mohammed — Ecommerce Developer for Small Brands
     </footer>
+
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
   </body>

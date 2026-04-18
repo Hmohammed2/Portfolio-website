@@ -11,7 +11,7 @@ const projects = [
     img: "assets/ResumeLogo.webp",
     title: "AIElevateCV",
     description:
-      "A Web tool that optimizes and tailors resume based on job description.",
+      "A web tool that optimizes and tailors resumes based on job descriptions.",
     link: "https://aielevatecv.com",
     external: true,
   },
@@ -19,7 +19,7 @@ const projects = [
     img: "assets/Talibah.png",
     title: "Talibah Match",
     description:
-      "A matrimonial platform for matching muslims seeking knowledge.",
+      "A matrimonial platform for matching Muslims seeking knowledge.",
     link: "/case-studies/talibah.html",
     external: false,
   },
@@ -27,7 +27,7 @@ const projects = [
     img: "assets/Geocode.PNG",
     title: "SimpleGeoAPI",
     description:
-      "An API for seamless geographic data integration and POI analysis",
+      "An API for seamless geographic data integration and POI analysis.",
     link: "https://simplegeoapi.com",
     external: true,
   },
@@ -35,7 +35,7 @@ const projects = [
     img: "assets/tutor-search.png",
     title: "Harambee Tutors",
     description:
-      "An online tutoring service project for students & tutors alike.",
+      "An online tutoring service project for students and tutors alike.",
     link: "https://harambeedevops.com",
     external: true,
   },
@@ -43,14 +43,14 @@ const projects = [
     img: "assets/tcpcomm.gif",
     title: "Lightweight TCP Server with HTTP Handling",
     description:
-      "This project is a lightweight TCP server built using Node.js...",
+      "A lightweight TCP server built using Node.js with custom HTTP handling.",
     link: "https://github.com/Hmohammed2/HTTP_Server",
     external: true,
   },
   {
     img: "assets/project-overview.png",
     title: "Pinterest Data Pipeline",
-    description: "End-to-end Pinterest Lambda pipeline replication...",
+    description: "End-to-end Pinterest Lambda pipeline replication project.",
     link: "https://github.com/Hmohammed2/Pinterest_Data_pipeline",
     external: true,
   },
@@ -58,93 +58,185 @@ const projects = [
 
 const track = document.getElementById("projects-track");
 const container = document.getElementById("projects-container");
+const prevProjectBtn = document.getElementById("prev-project");
+const nextProjectBtn = document.getElementById("next-project");
+
+const contactForm = document.getElementById("contact-form");
+const formSuccess = document.getElementById("form-success");
+const formStatus = document.getElementById("form-status");
 
 let currentIndex = 0;
 let projectsPerPage = 3;
 const GAP = 24;
 
-function renderProjects() {
-  track.innerHTML = projects
-    .map(
-      (project, index) => `
-<div class="bg-gray-700 p-4 rounded text-center flex-shrink-0" style="width: ${getCardWidth()}px">
-  <img src="${project.img}" alt="${
-        project.title
-      }" class="w-full h-auto mx-auto rounded-md object-cover" loading="lazy" />
-  <h3 class="text-xl font-bold mt-3">${project.title}</h3>
-  <p class="text-gray-300 mt-2">${project.description}</p>
-<a href="${project.link}"
-   ${project.external ? `target="_blank" rel="noopener noreferrer"` : ""}
-   class="mt-4 inline-block bg-yellow-500 text-black py-2 px-4 rounded-lg shadow-lg hover:bg-yellow-600 transition">
-
-   ${project.external ? "Visit Project" : "View Case Study"}
-</a>
-</div>
-  `
-    )
-    .join("");
-  updateTrackPosition();
+function initAOS() {
+  if (typeof AOS !== "undefined") {
+    AOS.init({
+      duration: 700,
+      once: true,
+      offset: 60,
+    });
+  }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  AOS.init({ duration: 1000, once: false, mirror: true });
-
-  const toggleBtn = document.getElementById("menu-toggle");
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", toggleMenu);
+function initLucide() {
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
   }
+}
 
-  // Close mobile nav on link click (only for small screens)
-  const navLinks = document.querySelectorAll("#nav-menu a");
-  navLinks.forEach((link) => {
+function initMobileMenu() {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
+
+  if (!menuToggle || !navMenu) return;
+
+  menuToggle.addEventListener("click", () => {
+    const isHidden = navMenu.classList.contains("hidden");
+    navMenu.classList.toggle("hidden");
+    menuToggle.setAttribute("aria-expanded", String(isHidden));
+  });
+
+  navMenu.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      const menu = document.getElementById("nav-menu");
-      if (window.innerWidth < 768) {
-        menu.classList.add("hidden");
-      }
+      navMenu.classList.add("hidden");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
-});
-
-function toggleMenu() {
-  const menu = document.getElementById("nav-menu");
-  menu.classList.toggle("hidden");
 }
 
 function getCardWidth() {
+  if (!container) return 0;
   const containerWidth = container.offsetWidth;
   return (containerWidth - (projectsPerPage - 1) * GAP) / projectsPerPage;
 }
 
+function renderProjects() {
+  if (!track) return;
+
+  track.innerHTML = projects
+    .map(
+      (project) => `
+        <article
+          class="glass-card rounded-2xl overflow-hidden border border-white/5 flex-shrink-0"
+          style="width: ${getCardWidth()}px"
+        >
+          <div class="aspect-[16/10] overflow-hidden bg-gray-800">
+            <img
+              src="${project.img}"
+              alt="${project.title}"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">${project.title}</h3>
+            <p class="text-gray-400 mb-4">${project.description}</p>
+
+            <a
+              href="${project.link}"
+              ${
+                project.external
+                  ? 'target="_blank" rel="noopener noreferrer"'
+                  : ""
+              }
+              class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-lg font-semibold transition"
+            >
+              ${project.external ? "Visit Project" : "View Case Study"}
+            </a>
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+
+  updateTrackPosition();
+}
+
 function updateTrackPosition() {
+  if (!track) return;
   const offset = currentIndex * (getCardWidth() + GAP);
   track.style.transform = `translateX(-${offset}px)`;
 }
 
 function adjustForScreenSize() {
   const width = window.innerWidth;
+
   if (width < 640) {
     projectsPerPage = 1;
-  } else if (width < 768) {
+  } else if (width < 1024) {
     projectsPerPage = 2;
   } else {
     projectsPerPage = 3;
   }
+
   currentIndex = 0;
   renderProjects();
 }
 
-document.getElementById("prev-project").addEventListener("click", () => {
-  currentIndex =
-    currentIndex === 0 ? projects.length - projectsPerPage : currentIndex - 1;
-  updateTrackPosition();
-});
+function initCarouselControls() {
+  if (prevProjectBtn) {
+    prevProjectBtn.addEventListener("click", () => {
+      currentIndex =
+        currentIndex === 0
+          ? Math.max(projects.length - projectsPerPage, 0)
+          : currentIndex - 1;
 
-document.getElementById("next-project").addEventListener("click", () => {
-  currentIndex =
-    currentIndex >= projects.length - projectsPerPage ? 0 : currentIndex + 1;
-  updateTrackPosition();
+      updateTrackPosition();
+    });
+  }
+
+  if (nextProjectBtn) {
+    nextProjectBtn.addEventListener("click", () => {
+      currentIndex =
+        currentIndex >= projects.length - projectsPerPage
+          ? 0
+          : currentIndex + 1;
+
+      updateTrackPosition();
+    });
+  }
+}
+
+function initContactForm() {
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const honey = contactForm.querySelector('input[name="website"]');
+    if (honey && honey.value) return;
+
+    contactForm.classList.add("hidden");
+
+    if (formSuccess) {
+      formSuccess.classList.remove("hidden");
+    }
+
+    if (formStatus) {
+      formStatus.textContent = "";
+    }
+
+    setTimeout(() => {
+      contactForm.reset();
+
+      if (formSuccess) {
+        formSuccess.classList.add("hidden");
+      }
+
+      contactForm.classList.remove("hidden");
+    }, 3000);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initAOS();
+  initLucide();
+  initMobileMenu();
+  initCarouselControls();
+  initContactForm();
+  adjustForScreenSize();
 });
 
 window.addEventListener("resize", adjustForScreenSize);
-window.addEventListener("DOMContentLoaded", adjustForScreenSize);
