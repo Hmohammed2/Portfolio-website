@@ -72,9 +72,10 @@ app.use(express.json());
 app.post("/api/send-email", async (req, res) => {
   console.log("RAW BODY:", req.body);
   console.log("HEADERS:", req.headers["content-type"]);
-  const { name, email, issues } = req.body;
 
-  if (!name || !email) {
+  const { name, email, issues, store_url, revenue } = req.body;
+
+  if (!name || !email || !store_url || !revenue || !issues) {
     return res.status(400).json({ error: "All fields are required" });
   }
 
@@ -103,6 +104,8 @@ app.post("/api/send-email", async (req, res) => {
                 <div class="details">
                     <p><strong>Name:</strong> ${name}</p>
                     <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Store URL:</strong> ${store_url}</p>
+                    <p><strong>Revenue:</strong> ${revenue}</p>
                     <p><strong>Message:</strong></p>
                     <p>${issues}</p>
                 </div>
@@ -115,7 +118,7 @@ app.post("/api/send-email", async (req, res) => {
     await sendEmail(
       "hamza_mohammed15@hotmail.com",
       `New Lead – ${email}`,
-      `Name: ${name}\nEmail: ${email}\nMessage:\n${issues}`,
+      `Name: ${name}\nEmail: ${email}\nStore URL: ${store_url}\nRevenue: ${revenue}\nMessage:\n${issues}`,
       htmlContent,
     );
 

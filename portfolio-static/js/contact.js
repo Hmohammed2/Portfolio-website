@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
       name: form.name.value,
       email: form.email.value,
       issues: form.issues.value,
+      store_url: form.store_url.value,
+      revenue: form.revenue.value,
       website: form.website.value || "", // honeypot
     };
 

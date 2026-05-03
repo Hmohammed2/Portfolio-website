@@ -34,6 +34,78 @@ function estimateReadTimeFromHtml(html) {
   return Math.max(1, Math.ceil(words / 220));
 }
 
+function slugify(text = "") {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/<[^>]*>/g, "")
+    .replace(/&amp;/g, "and")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
+}
+
+function addHeadingIdsAndExtractToc(html) {
+  const toc = [];
+  const usedIds = new Map();
+
+  const updatedHtml = html.replace(/<h2>(.*?)<\/h2>/g, (_, innerHtml) => {
+    const plainText = innerHtml.replace(/<[^>]*>/g, "").trim();
+    let baseId = slugify(plainText);
+    let finalId = baseId;
+
+    if (usedIds.has(baseId)) {
+      const count = usedIds.get(baseId) + 1;
+      usedIds.set(baseId, count);
+      finalId = `${baseId}-${count}`;
+    } else {
+      usedIds.set(baseId, 0);
+    }
+
+    toc.push({
+      id: finalId,
+      text: plainText,
+    });
+
+    return `<h2 id="${finalId}" class="scroll-mt-32">${innerHtml}</h2>`;
+  });
+
+  return {
+    contentHtml: updatedHtml,
+    toc,
+  };
+}
+
+function createTableOfContents(toc = []) {
+  if (!toc.length) return "";
+
+  const tocLinks = toc
+    .map(
+      (item) => `
+      <li>
+        <a
+          href="#${item.id}"
+          class="block text-sm text-gray-400 hover:text-white transition leading-relaxed"
+        >
+          ${escapeHtml(item.text)}
+        </a>
+      </li>
+    `,
+    )
+    .join("");
+
+  return `
+    <div class="glass-card rounded-2xl p-5">
+      <p class="text-sm font-semibold text-white mb-4">On this page</p>
+      <nav aria-label="Table of contents">
+        <ul class="space-y-3">
+          ${tocLinks}
+        </ul>
+      </nav>
+    </div>
+  `;
+}
+
 function createHead({ title, description, canonicalUrl, type = "website" }) {
   return `
   <meta charset="UTF-8" />
@@ -288,6 +360,7 @@ function createPostHtml(post) {
   const category = escapeHtml(post.category || "Ecommerce Guide");
   const canonicalUrl = `${siteUrl}/blog/${post.slug}.html`;
   const readTime = estimateReadTimeFromHtml(post.contentHtml);
+  const tocHtml = createTableOfContents(post.toc || []);
 
   return `<!doctype html>
 <html lang="en">
@@ -330,18 +403,18 @@ function createPostHtml(post) {
   ${createNav()}
 
   <main class="pt-28 md:pt-32 px-6 pb-20">
-    <article class="max-w-4xl mx-auto">
+    <article class="max-w-6xl mx-auto">
       <nav class="text-sm text-gray-400 mb-8" aria-label="Breadcrumb">
         <ol class="flex items-center gap-2 flex-wrap">
           <li><a href="/" class="hover:text-white">Home</a></li>
           <li>/</li>
-          <li><a href="/blog/" class="hover:text-white">Articles</a></li>
+          <li><a href="/blog/" class="hover:text-white">Blog</a></li>
           <li>/</li>
           <li><span class="text-white">${title}</span></li>
         </ol>
       </nav>
 
-      <header class="mb-10">
+      <header class="mb-10 max-w-4xl">
         <span class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-500/15 text-indigo-200 border border-indigo-400/20 rounded-full text-sm mb-6">
           ${category}
         </span>
@@ -363,8 +436,20 @@ function createPostHtml(post) {
         </div>
       </header>
 
+      ${
+        post.toc && post.toc.length
+          ? `
+      <div class="lg:hidden mb-8">
+        ${tocHtml}
+      </div>
+      `
+          : ""
+      }
+
       <div class="grid lg:grid-cols-12 gap-8 items-start">
-        <aside class="hidden lg:block lg:col-span-3 sticky top-28">
+        <aside class="hidden lg:block lg:col-span-3 sticky top-28 space-y-6">
+          ${tocHtml}
+
           <div class="glass-card rounded-2xl p-5">
             <p class="text-sm font-semibold text-white mb-3">Need ecommerce help?</p>
             <p class="text-sm text-gray-400 leading-relaxed mb-4">
@@ -377,7 +462,7 @@ function createPostHtml(post) {
           </div>
         </aside>
 
-        <div class="lg:col-span-9">
+        <div class="lg:col-span-9 max-w-4xl">
           <div class="section-shell gradient-border rounded-2xl p-6 md:p-10">
             <div class="blog-content">
               ${post.contentHtml}
@@ -610,6 +695,9 @@ function buildBlog() {
         throw new Error(`Missing title, description, date or slug in ${file}`);
       }
 
+      const renderedHtml = marked(content);
+      const { contentHtml, toc } = addHeadingIdsAndExtractToc(renderedHtml);
+
       return {
         title: data.title,
         description: data.description,
@@ -617,7 +705,8 @@ function buildBlog() {
         updated: data.updated || data.date,
         slug: data.slug,
         category: data.category || "Ecommerce Guide",
-        contentHtml: marked(content),
+        contentHtml,
+        toc,
       };
     })
     .sort((a, b) => new Date(b.date) - new Date(a.date));
